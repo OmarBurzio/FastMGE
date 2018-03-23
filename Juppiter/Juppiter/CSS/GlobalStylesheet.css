@@ -1,0 +1,16 @@
+﻿body {
+    background-color:lightgray;
+    padding:0px;
+}
+.sidebar{
+    float:left;
+    width:20vw;
+    height:96vh;
+    background-color:white;
+}
+.main{
+    float:right;
+    width:77.58vw;
+    height:96vh;
+    background-color:white;
+}
