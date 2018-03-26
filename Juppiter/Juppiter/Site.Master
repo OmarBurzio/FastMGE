@@ -12,7 +12,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <table style="height:98vh">
+        <table class="tableSiteMaster">
             <tr>
                 <td class="divPoweredBy">
                     <div>
@@ -20,8 +20,10 @@
                         <asp:Image ID="ImagePoweredBy" runat="server" ImageUrl="~/Resources/FastLogo101x57.png" />
                     </div>
                 </td>
-                <td class="main_menu">
+                <td class="tdMainContent" rowspan="2">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolderMenu" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
                     </asp:ContentPlaceHolder>
                 </td>
             </tr>
@@ -46,10 +48,6 @@
                             </Nodes>
                         </asp:TreeView>
                     </div>
-                </td>
-                <td class="main">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
-                    </asp:ContentPlaceHolder>
                 </td>
             </tr>
        </table>

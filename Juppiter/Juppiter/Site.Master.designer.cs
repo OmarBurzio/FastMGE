@@ -58,15 +58,6 @@ namespace Juppiter {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderMenu;
         
         /// <summary>
-        /// Controllo TreeViewNavigationBar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView TreeViewNavigationBar;
-        
-        /// <summary>
         /// Controllo ContentPlaceHolderMain.
         /// </summary>
         /// <remarks>
@@ -74,5 +65,14 @@ namespace Juppiter {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderMain;
+        
+        /// <summary>
+        /// Controllo TreeViewNavigationBar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TreeView TreeViewNavigationBar;
     }
 }

@@ -123,6 +123,16 @@ namespace Juppiter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_left16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("arrow_left16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_right16x16 {
             get {
                 object obj = ResourceManager.GetObject("arrow_right16x16", resourceCulture);
@@ -233,6 +243,26 @@ namespace Juppiter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap file16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("file16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("folder16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gestione_ticket16x16 {
             get {
                 object obj = ResourceManager.GetObject("gestione_ticket16x16", resourceCulture);
@@ -276,6 +306,16 @@ namespace Juppiter.Properties {
         internal static System.Drawing.Bitmap minus {
             get {
                 object obj = ResourceManager.GetObject("minus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newfile16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("newfile16x16_gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -333,6 +373,16 @@ namespace Juppiter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap progettazione16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("progettazione16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap real_time_16x16 {
             get {
                 object obj = ResourceManager.GetObject("real_time_16x16", resourceCulture);
@@ -346,6 +396,36 @@ namespace Juppiter.Properties {
         internal static System.Drawing.Bitmap real_time_16x16_gray {
             get {
                 object obj = ResourceManager.GetObject("real_time_16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_as_16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("save_as_16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("Save16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("settings_16x16_gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

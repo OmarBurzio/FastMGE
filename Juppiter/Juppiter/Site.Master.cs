@@ -23,7 +23,6 @@ namespace Juppiter
             public static string GestioneTicket = "GestioneTicket";
             public static string Strumenti = "Strumenti";
         }
-        private static int treeViewSelectedIndex = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {

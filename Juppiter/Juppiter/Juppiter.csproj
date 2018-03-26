@@ -132,6 +132,14 @@
     <None Include="Resources\acquisizione_dati_16x16_gray.png" />
     <None Include="Resources\prescrittiva16x16_gray.png" />
     <None Include="Resources\data_quality_16x16_gray.png" />
+    <None Include="Resources\folder16x16_gray.png" />
+    <None Include="Resources\newfile16x16_gray.png" />
+    <None Include="Resources\save_as_16x16_gray.png" />
+    <None Include="Resources\Save16x16_gray.png" />
+    <None Include="Resources\settings_16x16_gray.png" />
+    <None Include="Resources\arrow_left16x16_gray.png" />
+    <None Include="Resources\file16x16_gray.png" />
+    <None Include="Resources\progettazione16x16_gray.png" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">

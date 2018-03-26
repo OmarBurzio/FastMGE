@@ -1,13 +1,14 @@
 ﻿body {
     font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
-    background-color:lightgray;
+    background-color:#e1e1e1;
     padding:0px;
 }
 .sidebar{
     vertical-align:top;
     padding:0px;
-    width:20vw;
+    width:auto;
     height:92.5vh;
+    background-color:#e1e1e1;
 }
 .main{
     vertical-align:top;
@@ -18,7 +19,7 @@
 
 .main_menu{
     width:79vw;
-    background-color:gray;
+    background-color:white;
 }
 
 .divPoweredBy{
@@ -46,12 +47,29 @@
     overflow:auto;
     background-color:white;
     width:100%;
+    padding:.3em;
 }
 
-#TreeViewNavigationBar td{
-    padding:.5em;
-    padding-top:1em;
-    padding-bottom:1em;
+#TreeViewNavigationBar td {
+    padding: .5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.tdMainContent{
+    height:98vh;
+    vertical-align:top;
+    border-left:3px solid #e1e1e1;
+}
+
+.tableSiteMaster
+{
+    width:99vw;
+    background-color:white;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
 .LeftContent{
     width:50%;
     height:20vw;
@@ -69,4 +87,62 @@
     color:#4b4b4b;
     font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
     font-size: 1.1em;
+}
+
+.divMenuPage{
+    margin:0px;
+}
+
+.divMenuPage ul{
+    padding: 0;
+    list-style: none;
+    margin: auto;
+    margin-top: .2em;
+    margin-bottom: .2em
+}
+
+.divMenuPage>ul>li{
+    float:left;
+    text-align:center;
+    width:auto;
+    min-width:6.9em;
+}
+
+.divMenuPage > ul > li li{
+    text-align:left;
+    width:6.9em;
+    padding-top:2px;
+}
+
+.divMenuPage ul li a{
+    color:#4b4b4b;    
+    font-size: 1.1em;
+    text-decoration:none;
+    display:block;
+    border:1px solid #919191;
+    margin-right: .3em;
+    margin-left: .3em;
+    padding:.5em;
+    padding-top:.1em;
+    padding-bottom:.1em;
+    background-color:#e1e1e1;
+    border-radius:.1em; 
+    vertical-align:middle;
+}
+
+.divMenuPage ul li a:hover{
+    background-color:#e9e9e9;
+}
+
+.divMenuPage ul li ul{
+    display:none;
+}
+
+.divMenuPage ul li:hover ul{
+    display:block;
+}
+
+.divMenuPage li img{
+    margin-left:.4em !important;
+    margin-right:.4em !important;
 }
