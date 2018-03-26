@@ -95,14 +95,20 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Analytics Pages\ProgettazioneAnalisi.aspx" />
     <Content Include="Analytics.aspx" />
     <Content Include="CSS\GlobalStylesheet.css" />
+    <Content Include="Global.asax" />
     <Content Include="Immagini\minus.png" />
     <Content Include="Immagini\plus.png" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\FastLogo101x57.png" />
     <None Include="Resources\acquisizione_dati_16x16.png" />
     <None Include="Resources\analytics16x16.png" />
@@ -155,12 +161,22 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analytics Pages\ProgettazioneAnalisi.aspx.cs">
+      <DependentUpon>ProgettazioneAnalisi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analytics Pages\ProgettazioneAnalisi.aspx.designer.cs">
+      <DependentUpon>ProgettazioneAnalisi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Analytics.aspx.cs">
       <DependentUpon>Analytics.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Analytics.aspx.designer.cs">
       <DependentUpon>Analytics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Pages Analytics\ProgettazioneAnalisi.aspx.cs">
       <DependentUpon>ProgettazioneAnalisi.aspx</DependentUpon>
@@ -182,6 +198,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -189,6 +210,8 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Items\FilterElement.cs" />
+    <Compile Include="Utilities\Strings\Values.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

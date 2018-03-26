@@ -11,7 +11,28 @@ namespace Juppiter.Pages_Analytics
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            LViewFilter.DataSource = Global.dataTableFilterElements;
+            LViewFilter.DataBind();
         }
+        protected void ImageButton_Show(object sender, ImageClickEventArgs e)
+        {
+            if (((ImageButton)sender).ImageUrl.Contains("minus"))
+            {
+                ((ImageButton)sender).ImageUrl = Properties.Resources.plus.ToString();
+                if (((ImageButton)sender).CommandArgument == Properties.Settings.Default.ContenutoImportazione)
+                {
+                    
+                }
+            }else
+            {
+                ((ImageButton)sender).ImageUrl = Properties.Resources.minus.ToString();
+                if (((ImageButton)sender).CommandArgument == Properties.Settings.Default.ContenutoImportazione)
+                {
+                    Control myControl1 = FindControl(Properties.Settings.Default.ContenutoImportazione);
+                    myControl1.Visible = false;
+                }
+            }
+
+        }        
     }
 }

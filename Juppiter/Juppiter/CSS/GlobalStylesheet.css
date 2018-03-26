@@ -10,6 +10,11 @@
     height:92.5vh;
     background-color:#e1e1e1;
 }
+.navbar{
+    text-align:left;
+    background-color:#35baf6;
+    height:30px;
+}
 .main{
     vertical-align:top;
     width:79vw;
@@ -42,7 +47,6 @@
     width:3em;
 }
 
-
 .divTreeViewNavigationBarContainer{
     overflow:auto;
     background-color:white;
@@ -71,16 +75,14 @@
 }
 
 .LeftContent{
-    width:50%;
     height:20vw;
-    padding-left:0px;
     float:left;
 }
 .btn{
-    border:2px solid #35baf6;
-    background-color:#35baf6;
+    border:4px solid #35baf6;
+    background-color:white;
     color:black;
-    padding:10px;
+    padding:5px;
 }
 
 #TreeViewNavigationBar a{
