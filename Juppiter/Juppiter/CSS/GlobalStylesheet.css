@@ -44,10 +44,10 @@ fieldset {
 .LeftContent{
     width:50%;
     height:20vw;
-    padding-left:15px;
+    padding-left:0px;
     float:left;
 }
-button{
+.btn{
     border:2px solid #35baf6;
     background-color:#35baf6;
     color:black;
