@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="CSS/GlobalStylesheet.css" rel="stylesheet" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -12,15 +12,47 @@
 </head>
 <body>
     <form id="form1" runat="server">
-         <div class="sidebar">
-             <asp:Image ID="Image1" runat="server" /><br/>
-             <asp:Menu ID="Menu1" runat="server"></asp:Menu>
-             </div>
-        <div class="main">
-            
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
+        <table style="height:98vh">
+            <tr>
+                <td class="divPoweredBy">
+                    <div>
+                        <asp:Label ID="LabelPoweredBy" runat="server" Text="Powered by"></asp:Label>
+                        <asp:Image ID="ImagePoweredBy" runat="server" ImageUrl="~/Resources/FastLogo101x57.png" />
+                    </div>
+                </td>
+                <td class="main_menu">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolderMenu" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td class="sidebar">
+                    <div class="divTreeViewNavigationBarContainer">
+                        <asp:TreeView ID="TreeViewNavigationBar" runat="server" ShowExpandCollapse="false" CollapseImageUrl="~/Resources/arrow_down8x8.png" ExpandImageUrl="~/Resources/arrow_right8x8.png" OnSelectedNodeChanged="TreeViewNavigationBar_SelectedNodeChanged">
+                            <Nodes>
+                                <asp:TreeNode  Text="Acquisizione dati" ImageUrl="~/Resources/acquisizione_dati_16x16_gray.png" Value="AcquisizioneDati" />
+                                <asp:TreeNode  Text="Data quality" ImageUrl="~/Resources/data_quality_16x16_gray.png"  Value="DataQuality"/>
+                                <asp:TreeNode  Text="Analytics" ImageUrl="~/Resources/analytics16x16_gray.png"  Value="Analytics"/>
+                                <asp:TreeNode  Text="Real time" ImageUrl="~/Resources/real_time_16x16_gray.png"  Value="RealTime"/>
+                                <asp:TreeNode  Text="Knowledge" ImageUrl="~/Resources/knowledge16x16_gray.png"  Value="Knowledge">
+                                    <asp:TreeNode ImageUrl="~/Resources/descrittiva16x16_gray.png" Text="Descrittivo" Value="Descrittivo"></asp:TreeNode>
+                                    <asp:TreeNode ImageUrl="~/Resources/predittiva16x16_gray.png" Text="Predittivo" Value="Predittivo"></asp:TreeNode>
+                                    <asp:TreeNode ImageUrl="~/Resources/prescrittiva16x16_gray.png" Text="Prescrittivo" Value="Prescrittivo"></asp:TreeNode>
+                                </asp:TreeNode>
+                                <asp:TreeNode  Text="Dashboard" ImageUrl="~/Resources/dashboard16x16_gray.png"  Value="Dashboard"/>
+                                <asp:TreeNode  Text="Gestione ticket" ImageUrl="~/Resources/gestione_ticket16x16_gray.png"  Value="GestioneTicket"/>
+                                <asp:TreeNode  Text="Database" ImageUrl="~/Resources/database16x16_gray.png"  Value="Database"/>
+                                <asp:TreeNode  Text="Strumenti" ImageUrl="~/Resources/wrench16x16_gray.png"  Value="Strumenti"/>
+                            </Nodes>
+                        </asp:TreeView>
+                    </div>
+                </td>
+                <td class="main">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+       </table>
     </form>
 </body>
 </html>

@@ -103,8 +103,35 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pages Analytics\ProgettazioneAnalisi.aspx" />
-    <Content Include="Pages Analytics\Settings.aspx" />
+    <None Include="Resources\FastLogo101x57.png" />
+    <None Include="Resources\acquisizione_dati_16x16.png" />
+    <None Include="Resources\analytics16x16.png" />
+    <None Include="Resources\dashboard16x16.png" />
+    <None Include="Resources\data_quality_16x16.png" />
+    <None Include="Resources\database16x16.png" />
+    <None Include="Resources\descrittiva16x16.png" />
+    <None Include="Resources\gestione_ticket16x16.png" />
+    <None Include="Resources\knowledge16x16.png" />
+    <None Include="Resources\predittiva16x16.png" />
+    <None Include="Resources\prescrittiva16x16.png" />
+    <None Include="Resources\real_time_16x16.png" />
+    <None Include="Resources\wrench16x16.png" />
+    <None Include="Resources\arrow_down16x16.png" />
+    <None Include="Resources\arrow_right16x16.png" />
+    <None Include="Resources\arrow_down8x8.png" />
+    <None Include="Resources\arrow_right8x8.png" />
+    <None Include="Resources\analytics16x16_gray.png" />
+    <None Include="Resources\dashboard16x16_gray.png" />
+    <None Include="Resources\database16x16_gray.png" />
+    <None Include="Resources\descrittiva16x16_gray.png" />
+    <None Include="Resources\gestione_ticket16x16_gray.png" />
+    <None Include="Resources\knowledge16x16_gray.png" />
+    <None Include="Resources\predittiva16x16_gray.png" />
+    <None Include="Resources\real_time_16x16_gray.png" />
+    <None Include="Resources\wrench16x16_gray.png" />
+    <None Include="Resources\acquisizione_dati_16x16_gray.png" />
+    <None Include="Resources\prescrittiva16x16_gray.png" />
+    <None Include="Resources\data_quality_16x16_gray.png" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
@@ -162,6 +189,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
