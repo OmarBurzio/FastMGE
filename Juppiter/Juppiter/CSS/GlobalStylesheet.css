@@ -1,16 +1,61 @@
 ﻿body {
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
     background-color:lightgray;
     padding:0px;
 }
 .sidebar{
-    float:left;
+    vertical-align:top;
+    padding:0px;
     width:20vw;
-    height:96vh;
-    background-color:white;
+    height:92.5vh;
 }
 .main{
-    float:right;
-    width:77.58vw;
-    height:96vh;
+    vertical-align:top;
+    width:79vw;
+    height:92.5vh;
     background-color:white;
+}
+
+.main_menu{
+    width:79vw;
+    background-color:gray;
+}
+
+.divPoweredBy{
+    background-color:white;
+    font-size:1.5em;
+    font-style:italic;
+    color:#878787;
+    padding:.2em;
+}
+
+.divPoweredBy > div{
+    float:right;
+}
+.divPoweredBy > div > span{
+    margin-right:.4em;
+}
+
+.divPoweredBy > div > img{
+    height:1.6em;
+    width:3em;
+}
+
+
+.divTreeViewNavigationBarContainer{
+    overflow:auto;
+    background-color:white;
+    width:100%;
+}
+
+#TreeViewNavigationBar td{
+    padding:.5em;
+    padding-top:1em;
+    padding-bottom:1em;
+}
+
+#TreeViewNavigationBar a{
+    color:#4b4b4b;
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    font-size: 1.1em;
 }
