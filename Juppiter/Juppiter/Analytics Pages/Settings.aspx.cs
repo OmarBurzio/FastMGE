@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Juppiter.Pages_Analytics
+namespace Juppiter.Analytics_Pages
 {
     public partial class Settings : System.Web.UI.Page
     {

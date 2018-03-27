@@ -37,5 +37,14 @@ namespace Juppiter.Analytics_Pages
                     ContentEsecuzioneAnalisi.Visible = true;
             }
         }
+        protected void ButtonSelectFilter_Click(object sender, EventArgs e)
+        {
+            //string querystring = "settings.aspx";
+            //string newwin = "window.open('" + querystring + "');";
+            //clientscript.registerstartupscript(this.gettype(), "pop", newwin, true);
+            string FilterPage = ((Button)sender).CommandArgument;
+            frameFiltro.Src = "Settings.aspx";
+            //Response.Redirect(FilterPage);
+        }
     }
 }
