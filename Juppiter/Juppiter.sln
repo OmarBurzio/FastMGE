@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juppiter", "Juppiter\Juppiter.csproj", "{A2534CE4-002C-4973-85E6-628D32F8945D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EEB8DBDF-43D4-4ECB-9E67-70F0A7FEDDF0} = {EEB8DBDF-43D4-4ECB-9E67-70F0A7FEDDF0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juppiter.DL", "Juppiter.DL\Juppiter.DL.csproj", "{EEB8DBDF-43D4-4ECB-9E67-70F0A7FEDDF0}"
 EndProject

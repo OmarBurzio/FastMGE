@@ -70,28 +70,29 @@
                 <asp:ListView ID="LViewFilter" runat="server">
                     <ItemTemplate>
                         <asp:Button CssClass="btn" ID="ButtonSelectFilter" runat="server" Text='<%# Eval("Titolo") %>' ToolTip='<%# Eval("Descrizione") %>' OnClick="ButtonSelectFilter_Click" CommandArgument='<%# Eval("Page") %>' />
-                        </ItemTemplate>
+                    </ItemTemplate>
                 </asp:ListView>
-                <div runat="server" id="DivFiltro" Visible="false">
-                <asp:GridView ID="GridViewFilter" runat="server" CellPadding="4" Height="100px" Width="100px">
-                    <Columns>
-                        <asp:TemplateField HeaderText="Seleziona">
-                            <ItemTemplate>
-                                <asp:CheckBox ID="CheckboxFiltro" runat="server" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-                <asp:Button CssClass="btn" Text="Seleziona Elementi" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
+                <div runat="server" id="DivFiltro" visible="false">
+                    <asp:GridView ID="GridViewFilter" runat="server" CellPadding="4" Height="100px" Width="100px">
+                        <Columns>
+                            <asp:TemplateField HeaderText="Seleziona">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="CheckboxFiltro" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                    <asp:Button CssClass="btn" Text="Seleziona Elementi" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
+                </div>
+                <div> 
+
                 </div>
             </td>
             <td class="RightContent">
-                <fieldset style="height: 90%;">
-                    <asp:GridView ID="GridViewFilterScelti" runat="server" CellPadding="4" Height="100px" Width="100px">
-                        <Columns>
-                        </Columns>
-                    </asp:GridView>
-                </fieldset>
+                <asp:GridView ID="GridViewFilterScelti" runat="server" CellPadding="4" Height="100px" Width="100px">
+                    <Columns>
+                    </Columns>
+                </asp:GridView>
             </td>
         </tr>
         <tr class="navbar">
@@ -102,16 +103,12 @@
         </tr>
         <tr class="Content" id="ContentEsecuzioneAnalisi" runat="server">
             <td class="LeftContent">
-
                 <asp:Button CssClass="btn" runat="server" Text="RUN" />
-
             </td>
             <td class="RightContent">
-
                 <fieldset style="height: 90%;">
                     <asp:Label runat="server" ID="Label1"> </asp:Label>
                 </fieldset>
-
             </td>
         </tr>
     </table>   

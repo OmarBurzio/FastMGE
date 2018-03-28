@@ -42,7 +42,7 @@ namespace Juppiter.DL
                     }
 
                     IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
-                    IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Movimenti);
+                    IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Causali_Movimenti);
 
                     response.collection = collection.Aggregate()
                         .Group(new BsonDocument { { DatabaseColumnsName._id, "$"+DatabaseColumnsName.SCAUSALE }, { DatabaseColumnsName.Count , new BsonDocument("$sum", 1) } })
