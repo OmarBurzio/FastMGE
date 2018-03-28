@@ -12,8 +12,18 @@ namespace Juppiter
     public class Global : System.Web.HttpApplication
     {
         public static DataTable dataTableFilterElements;
+        public static DL.ServiceManager serviceManager;
+
         protected void Application_Start(object sender, EventArgs e)
         {
+            serviceManager = new DL.ServiceManager();
+            if(serviceManager.Initialize().Stato == DL.ItemEventoStato.OK)
+            {
+
+            }
+
+            //serviceManager.CausaliManager.GetPrime20Causali();
+
             dataTableFilterElements = new DataTable();
             dataTableFilterElements.Columns.Add(Utilities.Strings.Values.Codice, typeof(string));
             dataTableFilterElements.Columns.Add(Utilities.Strings.Values.Titolo, typeof(string));
@@ -31,6 +41,9 @@ namespace Juppiter
                 currentRow[Utilities.Strings.Values.Page] = currentFilter.Page;
                 dataTableFilterElements.Rows.Add(currentRow);
             }
+
+
+            //serviceManager.CausaliManager.GetPrime20Causali().ToDataTable();
         }   
     }
 }
