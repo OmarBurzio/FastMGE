@@ -85,22 +85,40 @@ namespace Juppiter.Analytics_Pages {
         protected global::System.Web.UI.WebControls.ListView LViewFilter;
         
         /// <summary>
-        /// Controllo frameFiltro.
+        /// Controllo DivFiltro.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlIframe frameFiltro;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivFiltro;
         
         /// <summary>
-        /// Controllo Label2.
+        /// Controllo GridViewFilter.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.GridView GridViewFilter;
+        
+        /// <summary>
+        /// Controllo ButtonSelezione.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonSelezione;
+        
+        /// <summary>
+        /// Controllo GridViewFilterScelti.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewFilterScelti;
         
         /// <summary>
         /// Controllo ContentEsecuzioneAnalisi.

@@ -72,11 +72,25 @@
                         <asp:Button CssClass="btn" ID="ButtonSelectFilter" runat="server" Text='<%# Eval("Titolo") %>' ToolTip='<%# Eval("Descrizione") %>' OnClick="ButtonSelectFilter_Click" CommandArgument='<%# Eval("Page") %>' />
                         </ItemTemplate>
                 </asp:ListView>
-                <iframe runat="server" id="frameFiltro"></iframe>
+                <div runat="server" id="DivFiltro" Visible="false">
+                <asp:GridView ID="GridViewFilter" runat="server" CellPadding="4" Height="100px" Width="100px">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Seleziona">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="CheckboxFiltro" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+                <asp:Button CssClass="btn" Text="Seleziona Elementi" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
+                </div>
             </td>
             <td class="RightContent">
                 <fieldset style="height: 90%;">
-                    <asp:Label runat="server" ID="Label2"> </asp:Label>
+                    <asp:GridView ID="GridViewFilterScelti" runat="server" CellPadding="4" Height="100px" Width="100px">
+                        <Columns>
+                        </Columns>
+                    </asp:GridView>
                 </fieldset>
             </td>
         </tr>
