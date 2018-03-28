@@ -34,7 +34,7 @@
                             <Nodes>
                                 <asp:TreeNode  Text="Acquisizione dati" ImageUrl="~/Resources/acquisizione_dati_16x16_gray.png" Value="AcquisizioneDati" />
                                 <asp:TreeNode  Text="Data quality" ImageUrl="~/Resources/data_quality_16x16_gray.png"  Value="DataQuality"/>
-                                <asp:TreeNode  Text="Analytics" ImageUrl="~/Resources/analytics16x16_gray.png"  Value="Analytics"/>
+                                <asp:TreeNode  Text="Analytics" ImageUrl="~/Resources/analytics16x16_gray.png"  Value="Analytics" NavigateUrl="~/Analytics.aspx"/>
                                 <asp:TreeNode  Text="Real time" ImageUrl="~/Resources/real_time_16x16_gray.png"  Value="RealTime"/>
                                 <asp:TreeNode  Text="Knowledge" ImageUrl="~/Resources/knowledge16x16_gray.png"  Value="Knowledge">
                                     <asp:TreeNode ImageUrl="~/Resources/descrittiva16x16_gray.png" Text="Descrittivo" Value="Descrittivo"></asp:TreeNode>
