@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Juppiter.DL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Port1" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">27017</Value>
+    </Setting>
+    <Setting Name="Port2" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">27018</Value>
+    </Setting>
+    <Setting Name="Port3" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">27019</Value>
+    </Setting>
+    <Setting Name="Mongod" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Mean\MongoDB\Server\3.6\bin\mongod.exe</Value>
+    </Setting>
+    <Setting Name="Node1" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\data\node1</Value>
+    </Setting>
+    <Setting Name="Node2" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\data\node2</Value>
+    </Setting>
+    <Setting Name="Node3" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\data\node3</Value>
+    </Setting>
+    <Setting Name="Import" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Mean\MongoDB\Server\3.6\bin\mongoimport.exe</Value>
+    </Setting>
+    <Setting Name="Path" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Sviluppatore\Desktop\mongo\db\</Value>
+    </Setting>
+    <Setting Name="connection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mongodb://localhost:27017,localhost:27018,localhost:27019</Value>
+    </Setting>
+    <Setting Name="ReplicationName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Prova</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
