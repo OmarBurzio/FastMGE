@@ -13,6 +13,8 @@ namespace Juppiter.Analytics_Pages
 {
     public partial class ProgettazioneAnalisi : System.Web.UI.Page
     {
+        static Dictionary<string, DataRow> dictionarySelectedRows;
+
         static List<BsonDocument> ListaCausaliScelti = new List<BsonDocument>();
 
         static DataTable dataTableSelectedItems;
@@ -49,6 +51,7 @@ namespace Juppiter.Analytics_Pages
         }
         protected void ButtonSelectFilter_Click(object sender, EventArgs e)
         {
+            dataTableSelectedItems = null;
             //var myDB = mclient.GetDatabase(Properties.Settings.Default.DbBAM);
             if (((Button)sender).ToolTip.Contains("Causale"))
             {
@@ -60,15 +63,22 @@ namespace Juppiter.Analytics_Pages
                     GridViewFilter.DataBind();
                 }
             }
-            else if (((Button)sender).ToolTip.Contains("Filiale"))
-            {                
-                //var updoneresult1 = collection.Aggregate().Project(Builders<BsonDocument>.Projection.Exclude("_id").Include("NFILIALE").Include("SDESCRIZIONECAUSALE")).Sort(Builders<BsonDocument>.Sort.Ascending("SCAUSALE")).Limit(20).ToList();
-               
+            else if (((Button)sender).ToolTip.Contains("filiali"))
+            {
+                ResponseDataTable response = Global.serviceManager.FilialiManager.GetFiliali().ToDataTable();  
+                if(response.result.Stato == DL.ItemEventoStato.OK)
+                {                    
+                    DivFiltro.Visible = true;
+                    GridViewFilter.DataSource = response.dataTable;
+                    GridViewFilter.DataBind();
+                }             
             }
             else if (((Button)sender).ToolTip.Contains("Corrente"))
             {
 
             }
+
+            dictionarySelectedRows = new Dictionary<string, DataRow>();
         }
 
         protected void ButtonSelezione_Click(object sender, EventArgs e)
@@ -76,24 +86,33 @@ namespace Juppiter.Analytics_Pages
             if (dataTableSelectedItems == null)
             {
                 dataTableSelectedItems = new DataTable();
-                dataTableSelectedItems.Columns.Add("CAUSALE", typeof(int));
-                dataTableSelectedItems.Columns.Add("DESCRIZIONE CAUSALE", typeof(string));
+                for( int c = 1; c< GridViewFilter.HeaderRow.Cells.Count; c++)
+                {
+                    dataTableSelectedItems.Columns.Add(GridViewFilter.HeaderRow.Cells[c].Text);
+                }
             }
             foreach (GridViewRow row in GridViewFilter.Rows)
             {
+                int c = 0;
                 if (row.RowType == DataControlRowType.DataRow)
                 {
                     CheckBox CheckRow = (row.Cells[0].FindControl("CheckboxFiltro") as CheckBox);
                     if (CheckRow.Checked)
                     {
                         DataRow currentRow = dataTableSelectedItems.NewRow();
-                        currentRow["CAUSALE"] = row.Cells[1].Text;
-                        if(row.Cells[2].Text == "&nbsp;")
+                        currentRow[0] = row.Cells[1].Text;
+                        if (row.Cells[2].Text == "&nbsp;")
                         {
                             row.Cells[2].Text = "";
-                        }                        
-                        currentRow["DESCRIZIONE CAUSALE"] = row.Cells[2].Text;                        
-                        dataTableSelectedItems.Rows.Add(currentRow);
+                        }
+                        currentRow[1] = row.Cells[2].Text;
+
+                        DataRow outRow;
+                        if (!dictionarySelectedRows.TryGetValue(currentRow[0].ToString(), out outRow))
+                        {
+                            dataTableSelectedItems.Rows.Add(currentRow);
+                            dictionarySelectedRows.Add(currentRow[0].ToString(), currentRow);
+                        }
                     }
                 }                   
             }

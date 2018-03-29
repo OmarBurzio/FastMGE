@@ -75,12 +75,10 @@
 }
 
 .RightContent{
-    height:20vw;
     float:right;
     width:50%;
 }
 .LeftContent{
-    height:20vw;
     float:left;
     width:49%;
 }

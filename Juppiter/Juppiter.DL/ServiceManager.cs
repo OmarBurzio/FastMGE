@@ -74,5 +74,18 @@ namespace Juppiter.DL
                 return causaliManagerInternal;
             }
         }
+
+        private FilialiManager FilialiManagerInternal = null;
+        public FilialiManager FilialiManager
+        {
+            get
+            {
+                if (FilialiManagerInternal == null)
+                {
+                    FilialiManagerInternal = new FilialiManager(this);
+                }
+                return FilialiManagerInternal;
+            }
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace Juppiter.DL.Entities
                 {
                     List<string> columnsName = collection[0].Names.ToList();
                     foreach (string currentColumn in columnsName) {
-                        response.dataTable.Columns.Add(currentColumn,typeof(string));
+                        response.dataTable.Columns.Add(currentColumn,currentColumn.GetType());
                     }
                     foreach (BsonDocument current in collection)
                     {

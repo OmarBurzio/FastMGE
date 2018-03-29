@@ -17,6 +17,8 @@ namespace Juppiter.DL.Strings
         public static string Count = "Count";
         public static string SSEGNO = "SSEGNO";
         public static string Segno = "Segno";
+        public static string FILIALE = "NFILIALE";
+        public static string IDMovimento = "id_Movimento";
 
     }
 }
