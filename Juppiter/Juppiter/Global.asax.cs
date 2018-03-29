@@ -22,7 +22,7 @@ namespace Juppiter
 
             }
 
-            //serviceManager.CausaliManager.GetPrime20Causali();
+            //serviceManager.CausaliManager.GetPrime20Causali().ToDataTable();
 
             dataTableFilterElements = new DataTable();
             dataTableFilterElements.Columns.Add(Utilities.Strings.Values.Codice, typeof(string));
