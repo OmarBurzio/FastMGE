@@ -11,6 +11,7 @@ namespace Juppiter.DL.Strings
         public static string Movimenti = "Movimenti";
         public static string Causali = "Causali";
         public static string Causali_Movimenti = "_Elab_Movimenti_Causale";
-        public static string Filiali_Movimenti = "_Elab_Movimenti_Filiale";
+        public static string Filiali_Movimenti = "_Elab_Movimenti_Fialiale";
+        public static string _Movimenti_Causali_OrderedCount = "_Movimenti_Causali_OrderedCount";
     }
 }

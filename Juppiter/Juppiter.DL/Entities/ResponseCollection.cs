@@ -26,11 +26,11 @@ namespace Juppiter.DL.Entities
             ResponseDataTable response = new ResponseDataTable(result);
             try
             {
-                if (result.Stato == ItemEventoStato.OK)
+                if (result.Stato == ItemEventoStato.OK && collection.Count > 0)
                 {
                     List<string> columnsName = collection[0].Names.ToList();
                     foreach (string currentColumn in columnsName) {
-                        response.dataTable.Columns.Add(currentColumn,currentColumn.GetType());
+                        response.dataTable.Columns.Add(currentColumn,getCustomType(collection[0].GetValue(currentColumn).GetType()));
                     }
                     foreach (BsonDocument current in collection)
                     {
@@ -54,6 +54,20 @@ namespace Juppiter.DL.Entities
                 response.result.AddError(ex);
             }
             return response;
+        }
+
+        private Type getCustomType(Type type)
+        {
+            switch (type.FullName)
+            {
+                case "MongoDB.Bson.BsonInt32":
+                    return typeof(int);
+                case "MongoDB.Bson.BsonString":
+                    return typeof(string);
+                default:
+                    return type;
+                
+            }
         }
     }
 }

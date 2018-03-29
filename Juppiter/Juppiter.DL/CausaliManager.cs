@@ -41,11 +41,27 @@ namespace Juppiter.DL
                         Initialize();
                     }
 
+                    //IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
+                    //IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Causali_Movimenti);
+
+                    //response.collection = collection.Aggregate()
+                    //    .Group(new BsonDocument { { DatabaseColumnsName._id, "$"+DatabaseColumnsName.SCAUSALE }, { DatabaseColumnsName.Count , new BsonDocument("$sum", 1) } })
+                    //    .Sort(new BsonDocument { { DatabaseColumnsName.Count, -1 } })
+                    //    .Limit(20)
+                    //    .Lookup(CollectionsName.Causali, DatabaseColumnsName._id, DatabaseColumnsName.SCAUSALE, DatabaseColumnsName.Dettagli)
+                    //    .Unwind(DatabaseColumnsName.Dettagli)
+                    //    .Group(new BsonDocument { { DatabaseColumnsName._id, new BsonDocument {
+                    //        { DatabaseColumnsName.Causale, "$" + DatabaseColumnsName.Dettagli + "." + DatabaseColumnsName.SCAUSALE }
+                    //        , { DatabaseColumnsName.DescrizioneCausale ,"$" + DatabaseColumnsName.Dettagli + "." + DatabaseColumnsName.SDESCRIZIONECAUSALE } } }
+                    //        , { DatabaseColumnsName.Count , new BsonDocument("$sum", 1) } })
+                    //    .Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, { DatabaseColumnsName.Causale, "$" + DatabaseColumnsName._id + "." + DatabaseColumnsName.Causale }
+                    //        , { DatabaseColumnsName.DescrizioneCausale ,"$" + DatabaseColumnsName._id + "." + DatabaseColumnsName.DescrizioneCausale } })
+                    //    .ToList();
+
                     IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
-                    IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Causali_Movimenti);
+                    IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName._Movimenti_Causali_OrderedCount);
 
                     response.collection = collection.Aggregate()
-                        .Group(new BsonDocument { { DatabaseColumnsName._id, "$"+DatabaseColumnsName.SCAUSALE }, { DatabaseColumnsName.Count , new BsonDocument("$sum", 1) } })
                         .Sort(new BsonDocument { { DatabaseColumnsName.Count, -1 } })
                         .Limit(20)
                         .Lookup(CollectionsName.Causali, DatabaseColumnsName._id, DatabaseColumnsName.SCAUSALE, DatabaseColumnsName.Dettagli)
@@ -57,6 +73,11 @@ namespace Juppiter.DL
                         .Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, { DatabaseColumnsName.Causale, "$" + DatabaseColumnsName._id + "." + DatabaseColumnsName.Causale }
                             , { DatabaseColumnsName.DescrizioneCausale ,"$" + DatabaseColumnsName._id + "." + DatabaseColumnsName.DescrizioneCausale } })
                         .ToList();
+
+                    if (response.collection.Count == 0)
+                    {
+                        throw new Exception("Empty list");
+                    }
 
                     dictionaryCausali.Add(DictionaryCausaliKey.Prime20Causali, response.collection);
                 }
