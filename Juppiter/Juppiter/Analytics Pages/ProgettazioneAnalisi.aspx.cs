@@ -51,10 +51,10 @@ namespace Juppiter.Analytics_Pages
         }
         protected void ButtonSelectFilter_Click(object sender, EventArgs e)
         {
-            dataTableSelectedItems = null;
             //var myDB = mclient.GetDatabase(Properties.Settings.Default.DbBAM);
             if (((Button)sender).ToolTip.Contains("Causale"))
             {
+                DivData.Visible = false;
                 ResponseDataTable responseDataTable = Global.serviceManager.CausaliManager.GetPrime20Causali().ToDataTable();
                 if (responseDataTable.result.Stato == DL.ItemEventoStato.OK)
                 {
@@ -65,6 +65,7 @@ namespace Juppiter.Analytics_Pages
             }
             else if (((Button)sender).ToolTip.Contains("filiali"))
             {
+                DivData.Visible = false;
                 ResponseDataTable response = Global.serviceManager.FilialiManager.GetFiliali().ToDataTable();  
                 if(response.result.Stato == DL.ItemEventoStato.OK)
                 {                    
@@ -73,9 +74,10 @@ namespace Juppiter.Analytics_Pages
                     GridViewFilter.DataBind();
                 }             
             }
-            else if (((Button)sender).ToolTip.Contains("Corrente"))
+            else if (((Button)sender).ToolTip.Contains("data"))
             {
-
+                DivData.Visible = true;
+                DivFiltro.Visible = false;
             }
 
             dictionarySelectedRows = new Dictionary<string, DataRow>();
@@ -92,8 +94,7 @@ namespace Juppiter.Analytics_Pages
                 }
             }
             foreach (GridViewRow row in GridViewFilter.Rows)
-            {
-                int c = 0;
+            {                
                 if (row.RowType == DataControlRowType.DataRow)
                 {
                     CheckBox CheckRow = (row.Cells[0].FindControl("CheckboxFiltro") as CheckBox);
@@ -118,6 +119,29 @@ namespace Juppiter.Analytics_Pages
             }
             GridViewFilterScelti.DataSource = dataTableSelectedItems;
             GridViewFilterScelti.DataBind();
+        }
+
+        protected void CheckDataA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((CheckBox)sender).Checked)
+            {
+                CalendarDataA.Enabled = true;
+            }
+            else
+            {
+                CalendarDataA.Enabled = false;
+            }
+        }
+
+        protected void ButtonScegliData_Click(object sender, EventArgs e)
+        {
+            if(CheckDataA.Checked)
+            {
+                if(CalendarDataDa.SelectedDate < CalendarDataA.SelectedDate)
+                {
+
+                }
+            }
         }
     }
 }

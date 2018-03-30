@@ -112,6 +112,51 @@ namespace Juppiter.Analytics_Pages {
         protected global::System.Web.UI.WebControls.Button ButtonSelezione;
         
         /// <summary>
+        /// Controllo DivData.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivData;
+        
+        /// <summary>
+        /// Controllo CheckDataA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckDataA;
+        
+        /// <summary>
+        /// Controllo CalendarDataDa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar CalendarDataDa;
+        
+        /// <summary>
+        /// Controllo CalendarDataA.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar CalendarDataA;
+        
+        /// <summary>
+        /// Controllo ButtonScegliData.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonScegliData;
+        
+        /// <summary>
         /// Controllo GridViewFilterScelti.
         /// </summary>
         /// <remarks>

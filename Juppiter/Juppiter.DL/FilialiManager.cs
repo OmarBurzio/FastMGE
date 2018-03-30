@@ -40,12 +40,12 @@ namespace Juppiter.DL
                         Initialize();
                     }
                     IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
-                    IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Filiali_Movimenti);
+                    IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName._Movimenti_Filiali_OrderedCount);
 
                    response.collection = collection.Aggregate()
-                        .Group(new BsonDocument { { DatabaseColumnsName._id, "$" + DatabaseColumnsName.FILIALE}})
-                        .Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, { DatabaseColumnsName.FILIALE, "$" + DatabaseColumnsName._id}, {"Sede Filiale",""} })
-                        .Sort(new BsonDocument { { DatabaseColumnsName.FILIALE, 1 } })
+                        .Sort(new BsonDocument { { DatabaseColumnsName.Count, -1 } })
+                        .Limit(20)
+                        .Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, { DatabaseColumnsName.NFILIALE, "$" + DatabaseColumnsName.NFILIALE}, {DatabaseColumnsName.Sfiliale, "$"+ DatabaseColumnsName .SFILIALE} })
                         .ToList();                   
                     dictionaryFiliali.Add(DictionaryFilialiliKey.Filiali, response.collection);
                 }

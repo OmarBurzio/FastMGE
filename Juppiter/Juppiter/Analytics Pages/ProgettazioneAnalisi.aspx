@@ -84,8 +84,27 @@
                     </asp:GridView>
                     <asp:Button CssClass="btn" Text="Seleziona Elementi" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
                 </div>
-                <div> 
-
+                <div id="DivData" runat="server" visible="false">
+                    <table>
+                        <tr>
+                            <td>
+                                <label>Data Da</label>
+                            </td>
+                            <td>
+                                <asp:CheckBox runat="server" id="CheckDataA" checked="false" AutoPostBack="true" OnCheckedChanged="CheckDataA_CheckedChanged"/>
+                                <label>Data A</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdCalendarContainer" style="padding:5px ">
+                                <asp:Calendar CssClass="cssCalendar" ID="CalendarDataDa" runat="server"></asp:Calendar>
+                            </td>
+                            <td class="tdCalendarContainer" style="padding:5px">
+                                <asp:Calendar CssClass="cssCalendar" ID="CalendarDataA" runat="server" Enabled="false"></asp:Calendar>
+                            </td>
+                        </tr>
+                    </table>
+                    <asp:Button CssClass="btn" runat="server" ID="ButtonScegliData" OnClick="ButtonScegliData_Click"/>
                 </div>
             </td>
             <td class="RightContent">
