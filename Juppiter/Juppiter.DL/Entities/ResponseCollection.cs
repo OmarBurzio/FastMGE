@@ -20,7 +20,6 @@ namespace Juppiter.DL.Entities
             collection = new List<T>();
         }
 
-
         public ResponseDataTable ToDataTable()
         {
             ResponseDataTable response = new ResponseDataTable(result);

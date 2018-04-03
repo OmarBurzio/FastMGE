@@ -171,6 +171,7 @@
     <None Include="Resources\arrow_left16x16_gray.png" />
     <None Include="Resources\file16x16_gray.png" />
     <None Include="Resources\progettazione16x16_gray.png" />
+    <None Include="Resources\deleteIcon16x16_gray.png" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
@@ -229,6 +230,7 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Items\FilterElement.cs" />
+    <Compile Include="Utilities\Items\SelectedFilterDataTable.cs" />
     <Compile Include="Utilities\Strings\Values.cs" />
   </ItemGroup>
   <ItemGroup>

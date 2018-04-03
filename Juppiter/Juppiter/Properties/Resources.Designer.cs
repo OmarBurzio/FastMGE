@@ -213,6 +213,16 @@ namespace Juppiter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap deleteIcon16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("deleteIcon16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap descrittiva16x16 {
             get {
                 object obj = ResourceManager.GetObject("descrittiva16x16", resourceCulture);

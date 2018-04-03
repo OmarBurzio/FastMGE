@@ -82,7 +82,6 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                    <asp:Button CssClass="btn" Text="Seleziona Elementi" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
                 </div>
                 <div id="DivData" runat="server" visible="false">
                     <table>
@@ -104,12 +103,17 @@
                             </td>
                         </tr>
                     </table>
-                    <asp:Button CssClass="btn" runat="server" ID="ButtonScegliData" OnClick="ButtonScegliData_Click"/>
                 </div>
+                <asp:Button CssClass="btn" Text="Seleziona" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
             </td>
             <td class="RightContent">
                 <asp:GridView ID="GridViewFilterScelti" runat="server" CellPadding="4" Height="100px" Width="100px">
                     <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton ID="ImageButtonDeselectFilter" ImageUrl="~/Resources/deleteIcon16x16_gray.png" OnClick="ImageButtonDeselectFilter_Click" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </td>

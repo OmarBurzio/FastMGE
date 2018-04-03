@@ -103,15 +103,6 @@ namespace Juppiter.Analytics_Pages {
         protected global::System.Web.UI.WebControls.GridView GridViewFilter;
         
         /// <summary>
-        /// Controllo ButtonSelezione.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonSelezione;
-        
-        /// <summary>
         /// Controllo DivData.
         /// </summary>
         /// <remarks>
@@ -148,13 +139,13 @@ namespace Juppiter.Analytics_Pages {
         protected global::System.Web.UI.WebControls.Calendar CalendarDataA;
         
         /// <summary>
-        /// Controllo ButtonScegliData.
+        /// Controllo ButtonSelezione.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonScegliData;
+        protected global::System.Web.UI.WebControls.Button ButtonSelezione;
         
         /// <summary>
         /// Controllo GridViewFilterScelti.
