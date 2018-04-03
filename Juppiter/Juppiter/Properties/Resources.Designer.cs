@@ -113,6 +113,26 @@ namespace Juppiter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_down16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("arrow_down16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_down32x32_gray {
+            get {
+                object obj = ResourceManager.GetObject("arrow_down32x32_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_down8x8 {
             get {
                 object obj = ResourceManager.GetObject("arrow_down8x8", resourceCulture);
@@ -136,6 +156,26 @@ namespace Juppiter.Properties {
         internal static System.Drawing.Bitmap arrow_right16x16 {
             get {
                 object obj = ResourceManager.GetObject("arrow_right16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_right16x16_gray {
+            get {
+                object obj = ResourceManager.GetObject("arrow_right16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_right32x32_gray {
+            get {
+                object obj = ResourceManager.GetObject("arrow_right32x32_gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
