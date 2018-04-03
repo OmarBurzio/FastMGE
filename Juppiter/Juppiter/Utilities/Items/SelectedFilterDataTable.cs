@@ -11,6 +11,8 @@ namespace Juppiter.Utilities.Items
         public static string Data = "Data";
         public static string Causale = "Causale";
         public static string Filiale = "Filiale";
+        public static string Segno = "Segno Movimento";
+        public static string StatoConto = "Stato Conto Corrente";
     }
 
     public static class SelectedFilterDataTable_Columns
@@ -62,7 +64,6 @@ namespace Juppiter.Utilities.Items
                 System.Diagnostics.Debug.Print("Error -- DataTableFilter -- AddFiltro -- " + ex.Message);
                 return false;
             }
-
             return true;
         }
 
@@ -70,18 +71,11 @@ namespace Juppiter.Utilities.Items
         {
             try
             {
-                if (Tipo == SelectedFilterDataTable_Types.Data)
+                DataRow[] dataRow = dataTable.Select(SelectedFilterDataTable_Columns.Tipo + " = '" + Tipo + "' AND " + SelectedFilterDataTable_Columns.Filtro + "= '" + Valore+"'");
+                if (dataRow.Length != 0)
                 {
-                    DataRow[] dateRow = dataTable.Select(SelectedFilterDataTable_Columns.Tipo + " = '" + SelectedFilterDataTable_Types.Data + "'");
-                    if (dateRow.Length != 0)
-                    {
-                        dataTable.Rows.Remove(dateRow[0]);
-                    }
+                    dataTable.Rows.Remove(dataRow[0]);
                 }
-
-                DataRow workrow = dataTable.NewRow();
-                workrow[SelectedFilterDataTable_Columns.Tipo] = Tipo;
-                workrow[SelectedFilterDataTable_Columns.Filtro] = Valore;
             }
             catch (Exception ex)
             {
@@ -94,6 +88,9 @@ namespace Juppiter.Utilities.Items
 
         public DataTable getDataTable()
         {
+            DataView dv = new DataView(dataTable);
+            dv.Sort = SelectedFilterDataTable_Columns.Tipo+ " asc";
+            dataTable = dv.ToTable();
             return dataTable;
         }
 

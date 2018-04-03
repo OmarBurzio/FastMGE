@@ -19,9 +19,7 @@ namespace Juppiter.Analytics_Pages
         static Dictionary<string, Dictionary<string,string>> dictionarySelectedRows;
 
         static List<BsonDocument> ListaCausaliScelti = new List<BsonDocument>();
-
-        //static DataTable dataTableSelectedItems;
-
+                
         static SelectedFilterDataTable dataTableSelectedItems;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -33,10 +31,7 @@ namespace Juppiter.Analytics_Pages
             }
 
             LViewFilter.DataSource = Global.dataTableFilterElements;
-            LViewFilter.DataBind();
-
-            //settings = MongoClientSettings.FromUrl(new MongoUrl(Properties.Settings.Default.connection));
-            //mclient = new MongoClient(settings);
+            LViewFilter.DataBind();            
         }
         protected void ImageButton_Show(object sender, ImageClickEventArgs e)
         {
@@ -62,10 +57,11 @@ namespace Juppiter.Analytics_Pages
             }
         }
         protected void ButtonSelectFilter_Click(object sender, EventArgs e)
-        {
-            //var myDB = mclient.GetDatabase(Properties.Settings.Default.DbBAM);
+        {           
             if (((Button)sender).ToolTip.Contains("Causale"))
             {
+                DivSegno.Visible = false;
+                DivStato.Visible = false;
                 DivData.Visible = false;
                 ResponseDataTable responseDataTable = Global.serviceManager.CausaliManager.GetPrime20Causali().ToDataTable();
                 if (responseDataTable.result.Stato == DL.ItemEventoStato.OK)
@@ -79,6 +75,8 @@ namespace Juppiter.Analytics_Pages
             else if (((Button)sender).ToolTip.Contains("filiali"))
             {
                 DivData.Visible = false;
+                DivSegno.Visible = false;
+                DivStato.Visible = false;
                 ResponseDataTable response = Global.serviceManager.FilialiManager.GetFiliali().ToDataTable();
                 if (response.result.Stato == DL.ItemEventoStato.OK)
                 {
@@ -92,9 +90,27 @@ namespace Juppiter.Analytics_Pages
             {
                 DivData.Visible = true;
                 DivFiltro.Visible = false;
+                DivSegno.Visible = false;
+                DivStato.Visible = false;
                 selectedFilterType = SelectedFilterDataTable_Types.Data;
             }
-
+            else if (((Button)sender).Text.Contains("Segno"))
+            {
+                DivData.Visible = false;
+                DivFiltro.Visible = false;
+                DivSegno.Visible = true;
+                DivStato.Visible = false;
+                selectedFilterType = SelectedFilterDataTable_Types.Segno;
+            }
+            else if (((Button)sender).Text.Contains("Conto"))
+            {
+                DivData.Visible = false;
+                DivFiltro.Visible = false;
+                DivSegno.Visible = false;
+                DivStato.Visible = true;
+                selectedFilterType = SelectedFilterDataTable_Types.StatoConto;
+            }
+            ButtonSelezione.Visible = true;
         }
 
         protected void ButtonSelezione_Click(object sender, EventArgs e)
@@ -177,8 +193,37 @@ namespace Juppiter.Analytics_Pages
                     }
                     dictionarySelectedRows[selectedFilterType] = currentValue;
                     dataTableSelectedItems.AddFiltro(selectedFilterType, CalendarDataDa.SelectedDate.ToShortDateString());
-
                 }
+            }
+            else if (selectedFilterType == SelectedFilterDataTable_Types.StatoConto || selectedFilterType == SelectedFilterDataTable_Types.Segno)
+            {
+                string value;
+                if (selectedFilterType == SelectedFilterDataTable_Types.StatoConto)
+                {
+                    if (currentValue.TryGetValue(SelectedFilterDataTable_Types.StatoConto, out value))
+                    {
+                        currentValue[SelectedFilterDataTable_Types.StatoConto] = RadioStato.SelectedValue.ToString();
+                    }
+                    else
+                    {
+                        currentValue.Add(SelectedFilterDataTable_Types.StatoConto, RadioStato.SelectedValue.ToString());
+                    }
+                    dictionarySelectedRows[selectedFilterType] = currentValue;
+                    dataTableSelectedItems.AddFiltro(selectedFilterType, RadioStato.SelectedValue.ToString());
+                }
+                else
+                {
+                    if (currentValue.TryGetValue(SelectedFilterDataTable_Types.Segno, out value))
+                    {
+                        currentValue[SelectedFilterDataTable_Types.Segno] = RadioSegno.SelectedValue.ToString();
+                    }
+                    else
+                    {
+                        currentValue.Add(SelectedFilterDataTable_Types.Segno, RadioSegno.SelectedValue.ToString());
+                    }
+                    dictionarySelectedRows[selectedFilterType] = currentValue;
+                    dataTableSelectedItems.AddFiltro(selectedFilterType, RadioSegno.SelectedValue.ToString());
+                }                
             }
             else
             {
@@ -186,15 +231,11 @@ namespace Juppiter.Analytics_Pages
                 {
                     if (row.RowType == DataControlRowType.DataRow)
                     {
+
                         CheckBox CheckRow = (row.Cells[0].FindControl("CheckboxFiltro") as CheckBox);
                         if (CheckRow.Checked)
                         {
-                            if (row.Cells[2].Text == "&nbsp;")
-                            {
-                                row.Cells[2].Text = "";
-                            }
-                            
-
+                            row.Cells[2].Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
 
                             string value;
                             if (!currentValue.TryGetValue(row.Cells[1].Text, out value))
@@ -232,21 +273,33 @@ namespace Juppiter.Analytics_Pages
                 CalendarDataA.Enabled = false;
             }
         }
-
-        protected void ButtonScegliData_Click(object sender, EventArgs e)
+        protected void GridViewFilterScelti_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(CheckDataA.Checked)
+            GridViewRow gdr = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+            int rowIndex = gdr.RowIndex;
+            if(e.CommandName == "Deseleziona")
             {
-                if(CalendarDataDa.SelectedDate < CalendarDataA.SelectedDate)
+                GridViewRow row =  GridViewFilterScelti.Rows[rowIndex];
+                row.Cells[1].Text = HttpUtility.HtmlDecode(row.Cells[1].Text);
+                row.Cells[2].Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
+                if(row.Cells[1].Text == SelectedFilterDataTable_Types.Data)
                 {
-
+                    dictionarySelectedRows.Remove(SelectedFilterDataTable_Types.Data);
                 }
+                else 
+                {
+                    Dictionary<string, string> CurrentDictionary;
+                    if(dictionarySelectedRows.TryGetValue(row.Cells[1].Text, out CurrentDictionary))
+                    {
+                        CurrentDictionary.Remove(row.Cells[2].Text.Split((" - ").ToCharArray())[0]);
+                        dictionarySelectedRows[row.Cells[1].Text] = CurrentDictionary;
+                    }
+                }
+                dataTableSelectedItems.RemoveFiltro(row.Cells[1].Text, row.Cells[2].Text);
+
+                GridViewFilterScelti.DataSource = dataTableSelectedItems.getDataTable();
+                GridViewFilterScelti.DataBind();
             }
-        }
-
-        protected void ImageButtonDeselectFilter_Click(object sender, ImageClickEventArgs e)
-        {
-
         }
     }
 }

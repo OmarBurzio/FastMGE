@@ -76,6 +76,15 @@ namespace Juppiter.Analytics_Pages {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow ContentImpostazioneFiltri;
         
         /// <summary>
+        /// Controllo tdP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell tdP;
+        
+        /// <summary>
         /// Controllo LViewFilter.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,42 @@ namespace Juppiter.Analytics_Pages {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar CalendarDataA;
+        
+        /// <summary>
+        /// Controllo DivStato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivStato;
+        
+        /// <summary>
+        /// Controllo RadioStato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioStato;
+        
+        /// <summary>
+        /// Controllo DivSegno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivSegno;
+        
+        /// <summary>
+        /// Controllo RadioSegno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioSegno;
         
         /// <summary>
         /// Controllo ButtonSelezione.

@@ -61,19 +61,18 @@
         <tr class="navbar">
             <td>
                 <asp:ImageButton runat="server" ImageAlign="Middle" ImageUrl="~/Immagini/minus.png" BorderStyle="None" CommandArgument="ContentImpostazioneFiltri" OnClick="ImageButton_Show"></asp:ImageButton>
-                <label>IMPOSTAZIONE FILTRI</label>
-
+                <label>IMPOSTAZIONE FILTRI</label>                
             </td>
-        </tr>
+        </tr>        
         <tr class="Content" id="ContentImpostazioneFiltri" runat="server">
-            <td class="LeftContent">
+            <td class="LeftContent" id="tdP">
                 <asp:ListView ID="LViewFilter" runat="server">
                     <ItemTemplate>
                         <asp:Button CssClass="btn" ID="ButtonSelectFilter" runat="server" Text='<%# Eval("Titolo") %>' ToolTip='<%# Eval("Descrizione") %>' OnClick="ButtonSelectFilter_Click" CommandArgument='<%# Eval("Page") %>' />
                     </ItemTemplate>
                 </asp:ListView>
                 <div runat="server" id="DivFiltro" visible="false">
-                    <asp:GridView ID="GridViewFilter" runat="server" CellPadding="4" Height="100px" Width="100px">
+                    <asp:GridView ID="GridViewFilter" runat="server" CellPadding="4"  >
                         <Columns>
                             <asp:TemplateField HeaderText="Seleziona">
                                 <ItemTemplate>
@@ -104,14 +103,28 @@
                         </tr>
                     </table>
                 </div>
-                <asp:Button CssClass="btn" Text="Seleziona" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
+               <div id="DivStato" runat="server" visible="false"> 
+                   <asp:RadioButtonList ID="RadioStato" runat="server">
+                       <asp:ListItem Value="Estinto"></asp:ListItem>
+                       <asp:ListItem Value="Aperto"></asp:ListItem>
+                       <asp:ListItem Value="Tutto"></asp:ListItem>
+                   </asp:RadioButtonList>
+               </div>
+                <div id="DivSegno" runat="server" visible="false"> 
+                    <asp:RadioButtonList ID="RadioSegno" runat="server">
+                       <asp:ListItem Value="Entrata"></asp:ListItem>
+                       <asp:ListItem Value="Uscita"></asp:ListItem>
+                       <asp:ListItem Value="Tutto"></asp:ListItem>
+                   </asp:RadioButtonList>
+               </div>
+                <asp:Button CssClass="btn" Visible="false" Text="Seleziona" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
             </td>
             <td class="RightContent">
-                <asp:GridView ID="GridViewFilterScelti" runat="server" CellPadding="4" Height="100px" Width="100px">
+                <asp:GridView ID="GridViewFilterScelti" OnRowCommand="GridViewFilterScelti_RowCommand" runat="server" CellPadding="4" >
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ID="ImageButtonDeselectFilter" ImageUrl="~/Resources/deleteIcon16x16_gray.png" OnClick="ImageButtonDeselectFilter_Click" runat="server" />
+                                <asp:ImageButton ID="ImageButtonDeselectFilter" ImageUrl="~/Resources/deleteIcon16x16_gray.png" CommandName="Deseleziona" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
