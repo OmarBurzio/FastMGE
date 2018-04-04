@@ -69,8 +69,10 @@
     <Compile Include="Entities\ResponseCollection.cs" />
     <Compile Include="Entities\ResponseDataTable.cs" />
     <Compile Include="Entities\ResponseEntity.cs" />
+    <Compile Include="Entities\SelectedFilterDataTable.cs" />
     <Compile Include="FilialiManager.cs" />
     <Compile Include="ItemEvento.cs" />
+    <Compile Include="MovimentiManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

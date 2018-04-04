@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 
-namespace Juppiter.Utilities.Items
+namespace Juppiter.DL.Entities
 {
     public static class SelectedFilterDataTable_Types
     {
@@ -24,7 +24,7 @@ namespace Juppiter.Utilities.Items
     public class SelectedFilterDataTable
     {
         private DataTable dataTable;
-        
+
         public SelectedFilterDataTable()
         {
             dataTable = new DataTable();
@@ -47,7 +47,7 @@ namespace Juppiter.Utilities.Items
             {
                 if (Tipo == SelectedFilterDataTable_Types.Data)
                 {
-                    DataRow[] dateRow = dataTable.Select(SelectedFilterDataTable_Columns.Tipo + " = '" + SelectedFilterDataTable_Types.Data+ "'");
+                    DataRow[] dateRow = dataTable.Select(SelectedFilterDataTable_Columns.Tipo + " = '" + SelectedFilterDataTable_Types.Data + "'");
                     if (dateRow.Length != 0)
                     {
                         dataTable.Rows.Remove(dateRow[0]);
@@ -59,11 +59,12 @@ namespace Juppiter.Utilities.Items
                 workrow[SelectedFilterDataTable_Columns.Filtro] = Valore;
                 dataTable.Rows.Add(workrow);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.Print("Error -- DataTableFilter -- AddFiltro -- " + ex.Message);
                 return false;
             }
+
             return true;
         }
 
@@ -71,11 +72,18 @@ namespace Juppiter.Utilities.Items
         {
             try
             {
-                DataRow[] dataRow = dataTable.Select(SelectedFilterDataTable_Columns.Tipo + " = '" + Tipo + "' AND " + SelectedFilterDataTable_Columns.Filtro + "= '" + Valore+"'");
-                if (dataRow.Length != 0)
+                if (Tipo == SelectedFilterDataTable_Types.Data)
                 {
-                    dataTable.Rows.Remove(dataRow[0]);
+                    DataRow[] dateRow = dataTable.Select(SelectedFilterDataTable_Columns.Tipo + " = '" + SelectedFilterDataTable_Types.Data + "'");
+                    if (dateRow.Length != 0)
+                    {
+                        dataTable.Rows.Remove(dateRow[0]);
+                    }
                 }
+
+                DataRow workrow = dataTable.NewRow();
+                workrow[SelectedFilterDataTable_Columns.Tipo] = Tipo;
+                workrow[SelectedFilterDataTable_Columns.Filtro] = Valore;
             }
             catch (Exception ex)
             {
@@ -88,9 +96,6 @@ namespace Juppiter.Utilities.Items
 
         public DataTable getDataTable()
         {
-            DataView dv = new DataView(dataTable);
-            dv.Sort = SelectedFilterDataTable_Columns.Tipo+ " asc";
-            dataTable = dv.ToTable();
             return dataTable;
         }
 
