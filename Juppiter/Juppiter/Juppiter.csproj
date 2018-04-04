@@ -234,7 +234,6 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Items\FilterElement.cs" />
-    <Compile Include="Utilities\Items\SelectedFilterDataTable.cs" />
     <Compile Include="Utilities\Strings\Values.cs" />
   </ItemGroup>
   <ItemGroup>

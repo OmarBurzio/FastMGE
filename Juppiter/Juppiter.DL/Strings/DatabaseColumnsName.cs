@@ -20,5 +20,6 @@ namespace Juppiter.DL.Strings
         public static string NFILIALE = "NFILIALE";
         public static string SFILIALE = "SFILIALE";
         public static string Sfiliale = "Sede Filiale";
+        public static string DDATA = "DDATA";
     }
 }
