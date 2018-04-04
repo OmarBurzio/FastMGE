@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="BaseManager.cs" />
     <Compile Include="CausaliManager.cs" />
+    <Compile Include="CollectionManager.cs" />
     <Compile Include="Entities\ResponseCollection.cs" />
     <Compile Include="Entities\ResponseDataTable.cs" />
     <Compile Include="Entities\ResponseEntity.cs" />

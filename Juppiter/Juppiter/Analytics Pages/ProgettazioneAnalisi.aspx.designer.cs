@@ -22,22 +22,13 @@ namespace Juppiter.Analytics_Pages {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow ContentImportazioneDati;
         
         /// <summary>
-        /// Controllo ButtonSeleziona.
+        /// Controllo selectColl.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonSeleziona;
-        
-        /// <summary>
-        /// Controllo LabelImporta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelImporta;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect selectColl;
         
         /// <summary>
         /// Controllo ButtonOK.
@@ -65,6 +56,15 @@ namespace Juppiter.Analytics_Pages {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelImportati;
+        
+        /// <summary>
+        /// Controllo GridViewDocumenti.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewDocumenti;
         
         /// <summary>
         /// Controllo ContentImpostazioneFiltri.
@@ -184,6 +184,15 @@ namespace Juppiter.Analytics_Pages {
         protected global::System.Web.UI.WebControls.RadioButtonList RadioSegno;
         
         /// <summary>
+        /// Controllo DivButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivButton;
+        
+        /// <summary>
         /// Controllo ButtonSelezione.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace Juppiter.Analytics_Pages {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonSelezione;
+        
+        /// <summary>
+        /// Controllo Button2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
         /// Controllo GridViewFilterScelti.

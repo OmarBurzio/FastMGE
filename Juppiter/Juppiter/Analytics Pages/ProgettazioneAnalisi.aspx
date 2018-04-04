@@ -31,6 +31,14 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
+    <script>        
+        (document).ready(function () {
+            $("div.btn-group button.btn").click(function () {
+                $("div.btn-group").find(".activeButton").removeClass("activeButton");
+                $(this).addClass("activeButton");
+            });
+        });
+    </script>
     <table class="main">
         <tr class="navbar">
             <td>
@@ -40,39 +48,42 @@
             </td>
         </tr>
         <tr runat="server" id="ContentImportazioneDati" class="Content">
-            <td class="LeftContent">
-                <asp:Button CssClass="btn" runat="server" Text="Seleziona" ID="ButtonSeleziona" />
+            <td class="LeftContent">                   
+                <select multiple="true" class="form-control" runat="server" id="selectColl">
+                </select>
                 <br />
                 <br />
-                <fieldset style="width: 60%; height: 40%">
-                    <asp:Label runat="server" ID="LabelImporta"> </asp:Label>
-                </fieldset>
+                <asp:Button CssClass="btn" runat="server" Text="OK" ID="ButtonOK" OnClick="ButtonOK_Click" />
+                <asp:Button CssClass="btn" runat="server" Text="ANNULLA" ID="ButtonAnnulla" OnClick="ButtonAnnulla_Click" CommandArgument="AnnullaImportazione"/>
                 <br />
-                <asp:Button CssClass="btn" runat="server" Text="OK" ID="ButtonOK" />
-                <asp:Button CssClass="btn" runat="server" Text="ANNULLA" ID="ButtonAnnulla" />
-
+                <br />
             </td>
             <td class="RightContent">
-                <fieldset style="height: 90%;">
-                    <asp:Label runat="server" ID="LabelImportati"> </asp:Label>
-                </fieldset>
+                <asp:Label runat="server" ID="LabelImportati"> </asp:Label>                
+                <asp:GridView ID="GridViewDocumenti" runat="server" CellPadding="4" >
+                    <Columns>                        
+                    </Columns>
+                </asp:GridView>
             </td>
         </tr>
         <tr class="navbar">
             <td>
+                <br />
                 <asp:ImageButton runat="server" ImageAlign="Middle" ImageUrl="~/Immagini/minus.png" BorderStyle="None" CommandArgument="ContentImpostazioneFiltri" OnClick="ImageButton_Show"></asp:ImageButton>
                 <label>IMPOSTAZIONE FILTRI</label>                
             </td>
         </tr>        
         <tr class="Content" id="ContentImpostazioneFiltri" runat="server">
             <td class="LeftContent" id="tdP">
-                <asp:ListView ID="LViewFilter" runat="server">
-                    <ItemTemplate>
-                        <asp:Button CssClass="btn" ID="ButtonSelectFilter" runat="server" Text='<%# Eval("Titolo") %>' ToolTip='<%# Eval("Descrizione") %>' OnClick="ButtonSelectFilter_Click" CommandArgument='<%# Eval("Page") %>' />
-                    </ItemTemplate>
-                </asp:ListView>
+                <div class="btn-group" role="group">
+                    <asp:ListView ID="LViewFilter" runat="server">
+                        <ItemTemplate>
+                            <asp:Button CssClass="btn" ID="ButtonSelectFilter" runat="server" Text='<%# Eval("Titolo") %>' ToolTip='<%# Eval("Descrizione") %>' OnClick="ButtonSelectFilter_Click" CommandArgument='<%# Eval("Page") %>' />
+                        </ItemTemplate>
+                    </asp:ListView>
+                </div>
                 <div runat="server" id="DivFiltro" visible="false">
-                    <asp:GridView ID="GridViewFilter" runat="server" CellPadding="4"  >
+                    <asp:GridView ID="GridViewFilter" runat="server" CellPadding="4">
                         <Columns>
                             <asp:TemplateField HeaderText="Seleziona">
                                 <ItemTemplate>
@@ -89,38 +100,43 @@
                                 <label>Data Da</label>
                             </td>
                             <td>
-                                <asp:CheckBox runat="server" id="CheckDataA" checked="false" AutoPostBack="true" OnCheckedChanged="CheckDataA_CheckedChanged"/>
+                                <asp:CheckBox runat="server" ID="CheckDataA" Checked="false" AutoPostBack="true" OnCheckedChanged="CheckDataA_CheckedChanged" />
                                 <label>Data A</label>
                             </td>
                         </tr>
                         <tr>
-                            <td class="tdCalendarContainer" style="padding:5px ">
+                            <td class="tdCalendarContainer" style="padding: 5px">
                                 <asp:Calendar CssClass="cssCalendar" ID="CalendarDataDa" runat="server"></asp:Calendar>
                             </td>
-                            <td class="tdCalendarContainer" style="padding:5px">
+                            <td class="tdCalendarContainer" style="padding: 5px">
                                 <asp:Calendar CssClass="cssCalendar" ID="CalendarDataA" runat="server" Enabled="false"></asp:Calendar>
                             </td>
                         </tr>
                     </table>
                 </div>
-               <div id="DivStato" runat="server" visible="false"> 
-                   <asp:RadioButtonList ID="RadioStato" runat="server">
-                       <asp:ListItem Value="Estinto"></asp:ListItem>
-                       <asp:ListItem Value="Aperto"></asp:ListItem>
-                       <asp:ListItem Value="Tutto"></asp:ListItem>
-                   </asp:RadioButtonList>
-               </div>
-                <div id="DivSegno" runat="server" visible="false"> 
+                <div id="DivStato" runat="server" visible="false">
+                    <asp:RadioButtonList ID="RadioStato" runat="server">
+                        <asp:ListItem Value="Estinto"></asp:ListItem>
+                        <asp:ListItem Value="Aperto"></asp:ListItem>
+                        <asp:ListItem Value="Tutto"></asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+                <div id="DivSegno" runat="server" visible="false">
                     <asp:RadioButtonList ID="RadioSegno" runat="server">
-                       <asp:ListItem Value="Entrata"></asp:ListItem>
-                       <asp:ListItem Value="Uscita"></asp:ListItem>
-                       <asp:ListItem Value="Tutto"></asp:ListItem>
-                   </asp:RadioButtonList>
-               </div>
-                <asp:Button CssClass="btn" Visible="false" Text="Seleziona" OnClick="ButtonSelezione_Click" runat="server" ID="ButtonSelezione" />
+                        <asp:ListItem Value="Entrata"></asp:ListItem>
+                        <asp:ListItem Value="Uscita"></asp:ListItem>
+                        <asp:ListItem Value="Tutto"></asp:ListItem>
+                    </asp:RadioButtonList>
+                </div>
+                <div id="DivButton" runat="server" visible="false">
+                    <asp:Button CssClass="btn" runat="server" Text="OK" ID="ButtonSelezione" OnClick="ButtonSelezione_Click" />
+                    <asp:Button CssClass="btn" runat="server" Text="ANNULLA" ID="Button2" OnClick="ButtonAnnulla_Click" CommandArgument="AnnullaFiltri" />
+                </div>
+                <br />
+                <br />
             </td>
             <td class="RightContent">
-                <asp:GridView ID="GridViewFilterScelti" OnRowCommand="GridViewFilterScelti_RowCommand" runat="server" CellPadding="4" >
+                <asp:GridView ID="GridViewFilterScelti" OnRowCommand="GridViewFilterScelti_RowCommand" runat="server" CellPadding="4">
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>

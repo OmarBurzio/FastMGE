@@ -60,8 +60,7 @@ namespace Juppiter.DL
 
             return result;
         }
-
-
+        
         private CausaliManager causaliManagerInternal = null;
         public CausaliManager CausaliManager
         {
@@ -85,6 +84,19 @@ namespace Juppiter.DL
                     FilialiManagerInternal = new FilialiManager(this);
                 }
                 return FilialiManagerInternal;
+            }
+        }
+
+        private CollectionManager CollectionManagerInternal = null;
+        public CollectionManager CollectionManager
+        {
+            get
+            {
+                if (CollectionManagerInternal == null)
+                {
+                    CollectionManagerInternal = new CollectionManager(this);
+                }
+                return CollectionManagerInternal;
             }
         }
     }

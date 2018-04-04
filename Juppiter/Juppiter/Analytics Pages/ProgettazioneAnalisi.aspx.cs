@@ -23,13 +23,16 @@ namespace Juppiter.Analytics_Pages
         static SelectedFilterDataTable dataTableSelectedItems;
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             if (!IsPostBack)
             {
                 dataTableSelectedItems = new SelectedFilterDataTable();
                 dictionarySelectedRows = new Dictionary<string, Dictionary<string,string>>();
-            }
-
+                foreach (var collezione in Global.serviceManager.CollectionManager.GetCollection().collection.ToList())
+                {
+                    selectColl.Items.Add(collezione["name"].ToString());
+                }
+            }            
             LViewFilter.DataSource = Global.dataTableFilterElements;
             LViewFilter.DataBind();            
         }
@@ -57,9 +60,11 @@ namespace Juppiter.Analytics_Pages
             }
         }
         protected void ButtonSelectFilter_Click(object sender, EventArgs e)
-        {           
+        {
+            DivButton.Visible = true;
             if (((Button)sender).ToolTip.Contains("Causale"))
             {
+                ((Button)sender).CssClass = ":active";
                 DivSegno.Visible = false;
                 DivStato.Visible = false;
                 DivData.Visible = false;
@@ -195,35 +200,37 @@ namespace Juppiter.Analytics_Pages
                     dataTableSelectedItems.AddFiltro(selectedFilterType, CalendarDataDa.SelectedDate.ToShortDateString());
                 }
             }
-            else if (selectedFilterType == SelectedFilterDataTable_Types.StatoConto || selectedFilterType == SelectedFilterDataTable_Types.Segno)
+            else if (selectedFilterType == SelectedFilterDataTable_Types.StatoConto)
             {
                 string value;
-                if (selectedFilterType == SelectedFilterDataTable_Types.StatoConto)
+                if (currentValue.TryGetValue(SelectedFilterDataTable_Types.StatoConto, out value))
                 {
-                    if (currentValue.TryGetValue(SelectedFilterDataTable_Types.StatoConto, out value))
-                    {
-                        currentValue[SelectedFilterDataTable_Types.StatoConto] = RadioStato.SelectedValue.ToString();
-                    }
-                    else
-                    {
-                        currentValue.Add(SelectedFilterDataTable_Types.StatoConto, RadioStato.SelectedValue.ToString());
-                    }
-                    dictionarySelectedRows[selectedFilterType] = currentValue;
-                    dataTableSelectedItems.AddFiltro(selectedFilterType, RadioStato.SelectedValue.ToString());
+                    value = RadioStato.SelectedValue.ToString();
+                    currentValue[SelectedFilterDataTable_Types.StatoConto] =value;
                 }
                 else
                 {
-                    if (currentValue.TryGetValue(SelectedFilterDataTable_Types.Segno, out value))
-                    {
-                        currentValue[SelectedFilterDataTable_Types.Segno] = RadioSegno.SelectedValue.ToString();
-                    }
-                    else
-                    {
-                        currentValue.Add(SelectedFilterDataTable_Types.Segno, RadioSegno.SelectedValue.ToString());
-                    }
-                    dictionarySelectedRows[selectedFilterType] = currentValue;
-                    dataTableSelectedItems.AddFiltro(selectedFilterType, RadioSegno.SelectedValue.ToString());
-                }                
+                    value = RadioStato.SelectedValue.ToString();
+                    currentValue.Add(SelectedFilterDataTable_Types.StatoConto,value);
+                }
+                dictionarySelectedRows[selectedFilterType] = currentValue;
+                dataTableSelectedItems.AddFiltro(selectedFilterType, value);
+            }
+            else if (selectedFilterType == SelectedFilterDataTable_Types.Segno)
+            {
+                string value;
+                if (currentValue.TryGetValue(SelectedFilterDataTable_Types.Segno, out value))
+                {
+                    value = RadioSegno.SelectedValue.ToString();
+                    currentValue[SelectedFilterDataTable_Types.Segno] = value;
+                }
+                else
+                {
+                    value = RadioSegno.SelectedValue.ToString();
+                    currentValue.Add(SelectedFilterDataTable_Types.Segno, value);
+                }
+                dictionarySelectedRows[selectedFilterType] = currentValue;
+                dataTableSelectedItems.AddFiltro(selectedFilterType, value);               
             }
             else
             {
@@ -231,7 +238,6 @@ namespace Juppiter.Analytics_Pages
                 {
                     if (row.RowType == DataControlRowType.DataRow)
                     {
-
                         CheckBox CheckRow = (row.Cells[0].FindControl("CheckboxFiltro") as CheckBox);
                         if (CheckRow.Checked)
                         {
@@ -257,7 +263,6 @@ namespace Juppiter.Analytics_Pages
                     }
                 }
             }
-
             GridViewFilterScelti.DataSource = dataTableSelectedItems.getDataTable();
             GridViewFilterScelti.DataBind();
         }
@@ -299,6 +304,42 @@ namespace Juppiter.Analytics_Pages
 
                 GridViewFilterScelti.DataSource = dataTableSelectedItems.getDataTable();
                 GridViewFilterScelti.DataBind();
+            }
+        }
+
+        protected void ButtonAnnulla_Click(object sender, EventArgs e)
+        {
+            if(((Button)sender).CommandArgument.Contains("Filtri"))
+            {
+                GridViewFilterScelti.DataBind();
+                dataTableSelectedItems = new SelectedFilterDataTable();
+                ListaCausaliScelti.Clear();
+                dictionarySelectedRows.Clear();
+            }
+            else
+            {
+                GridViewDocumenti.DataBind();
+                LabelImportati.Visible = false;
+            }
+        }
+
+        protected void ButtonOK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LabelImportati.Attributes.Add("style", "color:Green;");
+                LabelImportati.Text = "Primi cinque Documenti della collezione importata: "+"</br>";
+                ResponseDataTable response = Global.serviceManager.CollectionManager.GetPrimi20Documenti(selectColl.Value.ToString()).ToDataTable();
+                if (response.result.Stato == DL.ItemEventoStato.OK)
+                {                    
+                    GridViewDocumenti.DataSource = response.dataTable;
+                    GridViewDocumenti.DataBind();
+                }
+            }
+            catch(Exception ex)
+            {
+                LabelImportati.Attributes.Add("style", "color:Red;");
+                LabelImportati.Text = ex.ToString();
             }
         }
     }

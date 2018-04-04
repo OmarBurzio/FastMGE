@@ -53,6 +53,22 @@ namespace Juppiter.Utilities.Items
                         dataTable.Rows.Remove(dateRow[0]);
                     }
                 }
+                if (Tipo == SelectedFilterDataTable_Types.Segno)
+                {
+                    DataRow[] dateRow = dataTable.Select(SelectedFilterDataTable_Columns.Tipo + " = '" + SelectedFilterDataTable_Types.Segno + "'");
+                    if (dateRow.Length != 0)
+                    {
+                        dataTable.Rows.Remove(dateRow[0]);
+                    }
+                }
+                if (Tipo == SelectedFilterDataTable_Types.StatoConto)
+                {
+                    DataRow[] dateRow = dataTable.Select(SelectedFilterDataTable_Columns.Tipo + " = '" + SelectedFilterDataTable_Types.StatoConto + "'");
+                    if (dateRow.Length != 0)
+                    {
+                        dataTable.Rows.Remove(dateRow[0]);
+                    }
+                }
 
                 DataRow workrow = dataTable.NewRow();
                 workrow[SelectedFilterDataTable_Columns.Tipo] = Tipo;

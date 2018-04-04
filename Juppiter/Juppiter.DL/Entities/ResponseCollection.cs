@@ -65,6 +65,8 @@ namespace Juppiter.DL.Entities
                     return typeof(string);
                 case "MongoDB.Bson.BsonObjectId":
                     return typeof(BsonObjectId);
+                case "MongoDB.Bson.BsonDouble":
+                    return typeof(double);
                 default:
                     return type;
                 
