@@ -63,7 +63,12 @@ namespace Juppiter.Analytics_Pages
             DivButton.Visible = true;
             if (((Button)sender).ToolTip.Contains("Causale"))
             {
-                ((Button)sender).CssClass = ":active";
+                //((Button)sender).Attributes.Remove("class");
+                //((Button)sender).Attributes["class"] = "btnSelected";
+                //string pippo = ((Button)sender).CssClass;
+                //((Button)sender).CssClass = "btnSelected";
+                //LViewFilter.DataBind();
+                ((Button)sender).BackColor = System.Drawing.Color.LightBlue;
                 DivSegno.Visible = false;
                 DivStato.Visible = false;
                 DivData.Visible = false;

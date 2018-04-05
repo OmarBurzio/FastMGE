@@ -30,15 +30,7 @@
         </div>
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
-    <script>        
-        (document).ready(function () {
-            $("div.btn-group button.btn").click(function () {
-                $("div.btn-group").find(".activeButton").removeClass("activeButton");
-                $(this).addClass("activeButton");
-            });
-        });
-    </script>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">    
     <table class="main">
         <tr class="navbar">
             <td>

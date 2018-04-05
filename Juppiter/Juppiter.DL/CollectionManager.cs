@@ -39,7 +39,7 @@ namespace Juppiter.DL
                     {
                         Initialize();
                     }
-                    IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
+                    IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM_Affinati);
                     List<BsonDocument> collection = myDB.ListCollections().ToList();
 
                     response.collection = collection;
@@ -62,12 +62,12 @@ namespace Juppiter.DL
                 {
                     Initialize();
                 }
-                    IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
+                    IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM_Affinati);
                     IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(collezione);
 
                     response.collection = collection.Aggregate()
                         .Limit(5)
-                        .Project(new BsonDocument { { DatabaseColumnsName._id, 0 } }).ToList();
+                        .Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, {DatabaseColumnsName.DDATA,1 },  { DatabaseColumnsName.SFILIALE, 1 }, { DatabaseColumnsName.SSEGNO, 1 },{DatabaseColumnsName.SCAUSALE,1 },{ DatabaseColumnsName.SDESCRIZIONECAUSALE, 1 }, { DatabaseColumnsName.SRAPPORTO, 1 } }).ToList();
 
                 if (response.collection.Count == 0)
                 {

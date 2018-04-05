@@ -5,6 +5,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" lang="javascript">
+        //$(document).ready(function () {
+        //    var url = window.location;
+        //    $document.("LViewFilter").find('.active').removeClass('active');
+        //    $('.btn-group .btn').each(function () {
+        //        if (this.href == url) {
+        //            $(this).parent().addClass('active');
+        //        }
+        //    });
+        //});
+        //function toggleActiveState() {
+        //    this.classList.toggle('active');
+        //}
+        //var btns = document.querySelectorAll('.btn');
+        //[].forEach.call(btns, function (btn) {
+        //    btn.addEventListener('click', toggleActiveState, false);
+        //});
+        //$(document).getElementsByName("Causale").click(function () {
+        //    $(this).addClass("active");
+        //});
+    </script>
     <link href="CSS/GlobalStylesheet.css" rel="stylesheet" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">

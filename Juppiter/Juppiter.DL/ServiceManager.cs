@@ -10,6 +10,7 @@ namespace Juppiter.DL
     public static class DatabaseName
     {
         public static string BAM = "BAM";
+        public static string BAM_Affinati = "BAM_Affinati";
     }
 
     public class ServiceManager
