@@ -11,5 +11,8 @@
     <Setting Name="ContenutoEsecuzioneAnalisi" Type="System.String" Scope="Application">
       <Value Profile="(Default)">ContentEsecuzioneAnalisi</Value>
     </Setting>
+    <Setting Name="Parametro" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Parametro da Analizzare</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

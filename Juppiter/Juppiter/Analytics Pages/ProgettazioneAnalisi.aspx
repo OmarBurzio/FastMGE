@@ -30,7 +30,10 @@
         </div>
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">    
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">  
+    <script lang="javascript">
+        $(document).find("selectParametro").click();
+    </script>  
     <table class="main">
         <tr class="navbar">
             <td>
@@ -45,7 +48,7 @@
                 </select>
                 <br />
                 <br />
-                <asp:Button CssClass="btn" runat="server" Text="OK" ID="ButtonOK" OnClick="ButtonOK_Click" />
+                <asp:Button CssClass="btn" runat="server" Text="OK" ID="ButtonOK" OnClick="ButtonOK_Click" CommandArgument="Importazione"/>
                 <asp:Button CssClass="btn" runat="server" Text="ANNULLA" ID="ButtonAnnulla" OnClick="ButtonAnnulla_Click" CommandArgument="AnnullaImportazione"/>
                 <br />
                 <br />
@@ -147,12 +150,45 @@
         </tr>
         <tr class="Content" id="ContentEsecuzioneAnalisi" runat="server">
             <td class="LeftContent">
+                <label>Selezione parametro da analizzare</label> <br />                  
+                <select multiple="true" class="form-control" runat="server" id="selectParametro">
+                    <option value="N° Movimenti al Mese">N° Movimenti al Mese</option>
+                </select>
+                <br />
+                <br />
+                <label>Selezione grandezza Statistica</label>
+                <br />
+                <asp:ListView runat="server" ID="listStats">
+                    <ItemTemplate>
+                       <asp:Button CssClass="btn" runat="server" ToolTip="Grandezza Statistica" Text="Media Aritmetica" OnClick="SelectAnalisiStatistica_Onclick"/>
+                       <asp:Button CssClass="btn" runat="server" ToolTip="Grandezza Statistica" Text="Media Mobile 6 mesi" OnClick="SelectAnalisiStatistica_Onclick"/>
+                       <asp:Button CssClass="btn" runat="server" ToolTip="Grandezza Statistica" Text="Deviazione Standard" OnClick="SelectAnalisiStatistica_Onclick"/>
+                    </ItemTemplate>
+                </asp:ListView>                
+                <%--<select multiple="true" class="form-control" runat="server" id="selectStatistica">
+                    <option value="Media Aritmetica">Media Aritmetica</option>
+                    <option value="Media Mobile 6 mesi">Media Mobile 6 mesi</option>
+                    <option value="Deviazione Standard">Deviazione Standard</option>
+                </select>--%>
+                <br />
+                  <div runat="server">
+                    <asp:Button CssClass="btn" runat="server" Text="OK" ID="ButtonOKAnalisi" OnClick="ButtonOK_Click" CommandArgument="Analisi" />
+                    <asp:Button CssClass="btn" runat="server" Text="ANNULLA" ID="Button3" OnClick="ButtonAnnulla_Click" CommandArgument="AnnullaAnalisi" />
+                </div>
+                <br />
+                <br />
                 <asp:Button CssClass="btn" runat="server" Text="RUN" />
             </td>
             <td class="RightContent">
-                <fieldset style="height: 90%;">
-                    <asp:Label runat="server" ID="Label1"> </asp:Label>
-                </fieldset>
+                <asp:GridView ID="GridViewParametri" OnRowCommand="GridViewParametri_RowCommand" runat="server" CellPadding="4">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton ID="ImageButtonDeselectFilter" ImageUrl="~/Resources/deleteIcon16x16_gray.png" CommandName="Deseleziona" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
             </td>
         </tr>
     </table>   
