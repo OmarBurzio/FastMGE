@@ -151,33 +151,19 @@
         <tr class="Content" id="ContentEsecuzioneAnalisi" runat="server">
             <td class="LeftContent">
                 <label>Selezione parametro da analizzare</label> <br />                  
-                <select multiple="true" class="form-control" runat="server" id="selectParametro">
-                    <option value="N° Movimenti al Mese">N° Movimenti al Mese</option>
-                </select>
+               <asp:RadioButton runat="server" OnCheckedChanged="RadioButtonStats_CheckedChanged" ID="RadioButtonParameters1" AutoPostBack="true" Text="N° Movimenti al mese" GroupName="RadioParameters" ToolTip="Parametro da Analizzare" />
                 <br />
                 <br />
                 <label>Selezione grandezza Statistica</label>
-                <br />
-                <asp:ListView runat="server" ID="listStats">
-                    <ItemTemplate>
-                       <asp:Button CssClass="btn" runat="server" ToolTip="Grandezza Statistica" Text="Media Aritmetica" OnClick="SelectAnalisiStatistica_Onclick"/>
-                       <asp:Button CssClass="btn" runat="server" ToolTip="Grandezza Statistica" Text="Media Mobile 6 mesi" OnClick="SelectAnalisiStatistica_Onclick"/>
-                       <asp:Button CssClass="btn" runat="server" ToolTip="Grandezza Statistica" Text="Deviazione Standard" OnClick="SelectAnalisiStatistica_Onclick"/>
-                    </ItemTemplate>
-                </asp:ListView>                
-                <%--<select multiple="true" class="form-control" runat="server" id="selectStatistica">
-                    <option value="Media Aritmetica">Media Aritmetica</option>
-                    <option value="Media Mobile 6 mesi">Media Mobile 6 mesi</option>
-                    <option value="Deviazione Standard">Deviazione Standard</option>
-                </select>--%>
-                <br />
-                  <div runat="server">
-                    <asp:Button CssClass="btn" runat="server" Text="OK" ID="ButtonOKAnalisi" OnClick="ButtonOK_Click" CommandArgument="Analisi" />
-                    <asp:Button CssClass="btn" runat="server" Text="ANNULLA" ID="Button3" OnClick="ButtonAnnulla_Click" CommandArgument="AnnullaAnalisi" />
-                </div>
+                <br />                
+                <asp:RadioButton runat="server" OnCheckedChanged="RadioButtonStats_CheckedChanged" ID="RadioButtonStats1" AutoPostBack="true" Text="Media Aritmetica" GroupName="RadioStats" ToolTip="Grandezza da Analizzare"/>
+                <br />   
+                <asp:RadioButton runat="server" OnCheckedChanged="RadioButtonStats_CheckedChanged" ID="RadioButtonStats2" AutoPostBack="true" Text="Media Mobile 6 mesi" GroupName="RadioStats" ToolTip="Grandezza da Analizzare"/>
+                <br />   
+                <asp:RadioButton runat="server" OnCheckedChanged="RadioButtonStats_CheckedChanged" ID="RadioButtonStats3" AutoPostBack="true" Text="Deviazione Standard" GroupName="RadioStats" ToolTip="Grandezza da Analizzare" />                
                 <br />
                 <br />
-                <asp:Button CssClass="btn" runat="server" Text="RUN" />
+                <asp:Button CssClass="btn" runat="server" Text="RUN" OnClick="BtnRun_Click" ID="BtnRun"/>
             </td>
             <td class="RightContent">
                 <asp:GridView ID="GridViewParametri" OnRowCommand="GridViewParametri_RowCommand" runat="server" CellPadding="4">

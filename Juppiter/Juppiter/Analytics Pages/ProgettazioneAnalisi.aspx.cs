@@ -20,12 +20,9 @@ namespace Juppiter.Analytics_Pages
         static List<BsonDocument> ListaCausaliScelti = new List<BsonDocument>();
                 
         static SelectedFilterDataTable dataTableSelectedItems;
-
+                
         static DataTable DataTableParametri;
-        static List<string> ListSelectedParametri = new List<string>();
-        static List<string> ListSelectedAnalisi = new List<string>();
-
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {            
             if (!IsPostBack)
@@ -336,58 +333,23 @@ namespace Juppiter.Analytics_Pages
         {
             try
             {
-                if (((Button)sender).CommandArgument.Contains("Importazione"))
+                LabelImportati.Visible = true; ;
+                LabelImportati.Attributes.Add("style", "color:Green;");
+                LabelImportati.Text = "Primi cinque Documenti della collezione importata: " + "</br>";
+                ResponseDataTable response = Global.serviceManager.CollectionManager.GetPrimi20Documenti(selectColl.Value.ToString()).ToDataTable();
+                if (response.result.Stato == DL.ItemEventoStato.OK)
                 {
-                    LabelImportati.Visible = true; ;
-                    LabelImportati.Attributes.Add("style", "color:Green;");
-                    LabelImportati.Text = "Primi cinque Documenti della collezione importata: " + "</br>";
-                    ResponseDataTable response = Global.serviceManager.CollectionManager.GetPrimi20Documenti(selectColl.Value.ToString()).ToDataTable();
-                    if (response.result.Stato == DL.ItemEventoStato.OK)
-                    {
-                        GridViewDocumenti.DataSource = response.dataTable;
-                        GridViewDocumenti.DataBind();
-                    }
-                }
-                else
-                {
-                    //if (selectParametro.Value != "")
-                    //    SelecetAnalisiParametro_Onclick();
-                    //else
-                        //SelecetAnalisiStatistica_Onclick();
+                    GridViewDocumenti.DataSource = response.dataTable;
+                    GridViewDocumenti.DataBind();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LabelImportati.Attributes.Add("style", "color:Red;");
                 LabelImportati.Text = ex.ToString();
             }
         }
-
-        private void SelecetAnalisiParametro_Onclick()
-        {
-            if(DataTableParametri == null)
-            {
-                DataTableParametri = new DataTable();
-                DataTableParametri.Columns.Add("Tipo", typeof(string));
-                DataTableParametri.Columns.Add("Parametro", typeof(string));
-            }           
-            DataRow newRow = DataTableParametri.NewRow();
-            newRow["Tipo"] = Properties.Settings.Default.Parametro;
-            newRow["Parametro"] = selectParametro.Value.ToString();
-
-            if (!ListSelectedParametri.Contains(newRow["Tipo"].ToString()))
-            {
-                DataTableParametri.Rows.Clear();
-                ListSelectedParametri.Clear();
-                DataTableParametri.Rows.Add(newRow);
-                ListSelectedParametri.Add(newRow["Parametro"].ToString());
-            }
-            GridViewParametri.DataSource = DataTableParametri;
-            GridViewParametri.DataBind();
-            selectParametro.Value = "";
-        }
-
-        protected void SelectAnalisiStatistica_Onclick(object sender, EventArgs e)
+        protected void RadioButtonStats_CheckedChanged(object sender, EventArgs e)
         {
             if (DataTableParametri == null)
             {
@@ -396,19 +358,21 @@ namespace Juppiter.Analytics_Pages
                 DataTableParametri.Columns.Add("Parametro", typeof(string));
             }
             DataRow newRow = DataTableParametri.NewRow();
-            newRow["Tipo"] = ((Button)sender).ToolTip;
-            newRow["Parametro"] = ((Button)sender).Text;
+            newRow["Tipo"] = ((RadioButton)sender).ToolTip;
+            newRow["Parametro"] = ((RadioButton)sender).Text;
 
-            if (!ListSelectedAnalisi.Contains(newRow["Tipo"].ToString()))
+            for (var i = 0; i < DataTableParametri.Rows.Count; i++)
             {
-                DataTableParametri.Rows.Remove(newRow);
-                ListSelectedAnalisi.Clear();
-                DataTableParametri.Rows.Add(newRow);
-                ListSelectedAnalisi.Add(newRow["Parametro"].ToString());
-            }
+                DataRow dr = DataTableParametri.Rows[i];
+                if (dr[0] == newRow[0])
+                {
+                    dr.Delete();
+                }
+            }   
+            DataTableParametri.Rows.Add(newRow);
+
             GridViewParametri.DataSource = DataTableParametri;
             GridViewParametri.DataBind();
-           // selectStatistica.Value = "";
         }
 
         protected void GridViewParametri_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -421,18 +385,29 @@ namespace Juppiter.Analytics_Pages
                 row.Cells[1].Text = HttpUtility.HtmlDecode(row.Cells[1].Text);
                 row.Cells[2].Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
 
-                if (ListSelectedParametri.Contains(row.Cells[2].Text))
-                {                    
-                    ListSelectedParametri.Remove(row.Cells[2].Text);
+                for (var i = 0; i < DataTableParametri.Rows.Count; i++)
+                {
+                    DataRow dr = DataTableParametri.Rows[i];
+                    if (dr[0].ToString() == row.Cells[1].Text)
+                    {
+                        dr.Delete();
+                    }
                 }
-                DataRow dt = DataTableParametri.NewRow();
-                dt[0] = row.Cells[0].Text;
-                dt[1] = row.Cells[1].Text;
-                DataTableParametri.Rows.Remove(dt);
-
                 GridViewParametri.DataSource = DataTableParametri;
                 GridViewParametri.DataBind();
+                RadioButtonParameters1.Checked = false;                
             }
-        }    
+        }
+
+        protected void BtnRun_Click(object sender, EventArgs e)
+        {
+            if(dataTableSelectedItems != null)
+            {
+                ResponseDataTable response = Global.serviceManager.MovimentiManager.GetNumeroMovimentiFiltrati().
+            }
+            else
+            {
+            }
+        }
     }
 }

@@ -49,14 +49,5 @@ namespace Juppiter.Properties {
                 return ((string)(this["ContenutoEsecuzioneAnalisi"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Parametro da Analizzare")]
-        public string Parametro {
-            get {
-                return ((string)(this["Parametro"]));
-            }
-        }
     }
 }

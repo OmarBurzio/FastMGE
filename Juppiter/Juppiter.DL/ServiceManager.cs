@@ -100,5 +100,19 @@ namespace Juppiter.DL
                 return CollectionManagerInternal;
             }
         }
+
+        private MovimentiManager MovimentiManagerInternal = null;
+        
+        public MovimentiManager MovimentiManager
+        {
+            get
+            {
+                if (MovimentiManagerInternal == null)
+                {
+                    MovimentiManagerInternal = new MovimentiManager(this);
+                }
+                return MovimentiManagerInternal;
+            }
+        }
     }
 }

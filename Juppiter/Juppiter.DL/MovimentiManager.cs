@@ -56,9 +56,7 @@ namespace Juppiter.DL
             {
                 response.result.AddError(ex);
             }
-
         }
-
 
         private delegate void OutAction<T1, T2, T3>(T1 dataDa, T2 dataA, out T3 listResult);
 
@@ -113,16 +111,13 @@ namespace Juppiter.DL
                     }
                     else
                     {
-
                         dataDa = DateTime.Parse(dates[0]);
                         dataA = DateTime.Parse(dates[0]);
                     }
 
                     List<Action> listAction = new List<Action>();
                     Dictionary<int, ResponseCollection<BsonDocument>> dictionaryResponses = new Dictionary<int, ResponseCollection<BsonDocument>>();
-
                     
-
                     for (int year = dataDa.Year; year <= dataA.Year; year++)
                     {
                         ResponseCollection<BsonDocument> currentResponse = new ResponseCollection<BsonDocument>();
@@ -147,7 +142,6 @@ namespace Juppiter.DL
                             listAction.Add(new Action(() => { OutFuncDate(DateTime.Parse("01/01/" + year.ToString()), DateTime.Parse("31/12/" + year.ToString()), out currentResponse); }));
                         }
                     }
-
                 }
             }
             catch(Exception ex)
@@ -159,7 +153,6 @@ namespace Juppiter.DL
         public ResponseEntity<BsonDocument> GetNumeroMovimentiFiltrati(Dictionary<string,Dictionary<string,string>> filterDictionary)
         {
             ResponseEntity<BsonDocument> response = new ResponseEntity<BsonDocument>();
-
             try
             {
                 Dictionary<string, string> currentDictionary;

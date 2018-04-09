@@ -229,40 +229,49 @@ namespace Juppiter.Analytics_Pages {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow ContentEsecuzioneAnalisi;
         
         /// <summary>
-        /// Controllo selectParametro.
+        /// Controllo RadioButtonParameters1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect selectParametro;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButtonParameters1;
         
         /// <summary>
-        /// Controllo listStats.
+        /// Controllo RadioButtonStats1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView listStats;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButtonStats1;
         
         /// <summary>
-        /// Controllo ButtonOKAnalisi.
+        /// Controllo RadioButtonStats2.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonOKAnalisi;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButtonStats2;
         
         /// <summary>
-        /// Controllo Button3.
+        /// Controllo RadioButtonStats3.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.RadioButton RadioButtonStats3;
+        
+        /// <summary>
+        /// Controllo BtnRun.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnRun;
         
         /// <summary>
         /// Controllo GridViewParametri.
