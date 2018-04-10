@@ -403,7 +403,7 @@ namespace Juppiter.Analytics_Pages
         {
             if(dataTableSelectedItems != null)
             {
-                ResponseDataTable response = Global.serviceManager.MovimentiManager.GetNumeroMovimentiFiltrati().
+                ResponseEntity<BsonDocument> response = Global.serviceManager.MovimentiManager.GetNumeroMovimentiFiltrati(dictionarySelectedRows);
             }
             else
             {

@@ -22,5 +22,17 @@ namespace Juppiter.DL.Strings
         public static string Sfiliale = "Sede Filiale";
         public static string DDATA = "DDATA";
         public static string SRAPPORTO = "SRAPPORTO";
+        public static string SSTATORAPPORTO = "SSTATORAPPORTO";
+
+        public static class stato
+        {
+            public static string Estinto = "E";
+            public static string Aperto = "A";
+        }
+        public static class segno
+        {
+            public static string Entrata = "A";
+            public static string Uscita = "D";
+        }
     }
 }

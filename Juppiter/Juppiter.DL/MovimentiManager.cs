@@ -73,7 +73,7 @@ namespace Juppiter.DL
                     {
                         listFilter.Add(builder.Eq(DatabaseColumnsName.SCAUSALE, currentKey));
                     }
-                    if(listFilter.Count > 0)
+                    if (listFilter.Count > 0)
                     {
                         IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
                         IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Causali_Movimenti);
@@ -96,15 +96,58 @@ namespace Juppiter.DL
                         response.collection = collection.Aggregate().Match(builder.And(listFilter.ToArray())).ToList();
                     }
                 }
-                else if(key == SelectedFilterDataTable_Types.Data)
+                else if (key == SelectedFilterDataTable_Types.Segno)
+                {
+                    FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Empty;
+                    foreach (string g in dictionary.Values)
+                    {
+                        switch (g)
+                        {
+                            case "Entrata":
+                                filter = builder.Eq(DatabaseColumnsName.SSTATORAPPORTO, DatabaseColumnsName.segno.Entrata);
+                                break;
+                            case "Uscita":
+                                filter = builder.Eq(DatabaseColumnsName.SSTATORAPPORTO, DatabaseColumnsName.segno.Uscita);
+                                break;
+                        }                        
+                    }
+
+                    IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
+                    IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Segno_Movimenti);
+
+                    response.collection = collection.Aggregate().Match(filter).ToList();
+                }
+                else if (key == SelectedFilterDataTable_Types.StatoConto)
+                {
+                    FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Empty;
+                    foreach (string g in dictionary.Values)
+                    {
+                        switch (g)
+                        {
+                            case "Aperto":
+                                filter = builder.Eq(DatabaseColumnsName.SSTATORAPPORTO, DatabaseColumnsName.stato.Aperto);
+                                break;
+                            case "Estinto":
+                                filter = builder.Eq(DatabaseColumnsName.SSTATORAPPORTO, DatabaseColumnsName.stato.Estinto);
+                                break;
+                        }
+                        filter = builder.Eq(DatabaseColumnsName.SSTATORAPPORTO, g);
+                    }
+
+                    IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
+                    IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Stato_Movimenti);
+                    
+                    response.collection = collection.Aggregate().Match(filter).ToList();
+                }
+                else if (key == SelectedFilterDataTable_Types.Data)
                 {
                     string value;
-                    dictionary.TryGetValue(key,out value);
+                    dictionary.TryGetValue(key, out value);
 
                     string[] dates = value.Split((" - ".ToCharArray()));
 
                     DateTime dataDa, dataA;
-                    if(dates.Length > 1)
+                    if (dates.Length > 1)
                     {
                         dataDa = DateTime.Parse(dates[0]);
                         dataA = DateTime.Parse(dates[1]);
@@ -117,7 +160,7 @@ namespace Juppiter.DL
 
                     List<Action> listAction = new List<Action>();
                     Dictionary<int, ResponseCollection<BsonDocument>> dictionaryResponses = new Dictionary<int, ResponseCollection<BsonDocument>>();
-                    
+
                     for (int year = dataDa.Year; year <= dataA.Year; year++)
                     {
                         ResponseCollection<BsonDocument> currentResponse = new ResponseCollection<BsonDocument>();
@@ -131,7 +174,7 @@ namespace Juppiter.DL
                         }
                         else if (year == dataDa.Year)
                         {
-                            listAction.Add(new Action(() => { OutFuncDate(dataDa, DateTime.Parse("31/12/"+year.ToString()), out currentResponse); }));
+                            listAction.Add(new Action(() => { OutFuncDate(dataDa, DateTime.Parse("31/12/" + year.ToString()), out currentResponse); }));
                         }
                         else if (year == dataA.Year)
                         {
@@ -157,11 +200,11 @@ namespace Juppiter.DL
             {
                 Dictionary<string, string> currentDictionary;
 
-                List<Action> listAction = new List<Action>();
+            //    List<Action> listAction = new List<Action>();
 
                 Dictionary<string, ResponseCollection<BsonDocument>> dictionaryList = new Dictionary<string, ResponseCollection<BsonDocument>>();
 
-                ResponseCollection<BsonDocument> currentResponse = new ResponseCollection<BsonDocument>(); ;
+                ResponseCollection<BsonDocument> currentResponse = new ResponseCollection<BsonDocument>();
 
                 foreach (string currentKey in filterDictionary.Keys)
                 {
@@ -170,10 +213,11 @@ namespace Juppiter.DL
 
                     dictionaryList.TryGetValue(currentKey, out currentResponse);
 
-                    listAction.Add(new Action(() => { OutFunc(currentKey, currentDictionary, out currentResponse); }));
+                    OutFunc(currentKey, currentDictionary, out currentResponse);
+                    // listAction.Add(new Action(() => { OutFunc(currentKey, currentDictionary, out currentResponse); }));
                 }
-
-                Parallel.Invoke(listAction.ToArray());
+              //  Parallel.Invoke(listAction.ToArray());
+              
             }
             catch(Exception ex)
             {
@@ -181,6 +225,6 @@ namespace Juppiter.DL
             }
 
             return response;
-        }
+        }      
     }
 }

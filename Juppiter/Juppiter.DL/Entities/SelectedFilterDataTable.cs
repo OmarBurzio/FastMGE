@@ -96,10 +96,17 @@ namespace Juppiter.DL.Entities
                         dataTable.Rows.Remove(dateRow[0]);
                     }
                 }
-
-                DataRow workrow = dataTable.NewRow();
-                workrow[SelectedFilterDataTable_Columns.Tipo] = Tipo;
-                workrow[SelectedFilterDataTable_Columns.Filtro] = Valore;
+                else
+                {                    
+                    for (var i = 0; i < dataTable.Rows.Count; i++)
+                    {
+                        DataRow workrow = dataTable.Rows[i];
+                         if (workrow[0].ToString() == Tipo && workrow[1].ToString() == Valore)
+                        {
+                            dataTable.Rows.Remove(workrow);
+                        }                       
+                    }
+                }
             }
             catch (Exception ex)
             {
