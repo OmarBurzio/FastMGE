@@ -104,10 +104,10 @@ namespace Juppiter.DL
                         switch (g)
                         {
                             case "Entrata":
-                                filter = builder.Eq(DatabaseColumnsName.SSTATORAPPORTO, DatabaseColumnsName.segno.Entrata);
+                                filter = builder.Eq(DatabaseColumnsName.SSEGNO, DatabaseColumnsName.segno.Entrata);
                                 break;
                             case "Uscita":
-                                filter = builder.Eq(DatabaseColumnsName.SSTATORAPPORTO, DatabaseColumnsName.segno.Uscita);
+                                filter = builder.Eq(DatabaseColumnsName.SSEGNO, DatabaseColumnsName.segno.Uscita);
                                 break;
                         }                        
                     }
@@ -205,7 +205,7 @@ namespace Juppiter.DL
                 Dictionary<string, ResponseCollection<BsonDocument>> dictionaryList = new Dictionary<string, ResponseCollection<BsonDocument>>();
 
                 ResponseCollection<BsonDocument> currentResponse = new ResponseCollection<BsonDocument>();
-
+                 
                 foreach (string currentKey in filterDictionary.Keys)
                 {
                     dictionaryList.Add(currentKey, currentResponse);
@@ -215,6 +215,7 @@ namespace Juppiter.DL
 
                     OutFunc(currentKey, currentDictionary, out currentResponse);
                     // listAction.Add(new Action(() => { OutFunc(currentKey, currentDictionary, out currentResponse); }));
+                    
                 }
               //  Parallel.Invoke(listAction.ToArray());
               
