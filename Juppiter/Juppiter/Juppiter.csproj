@@ -176,6 +176,10 @@
     <None Include="Resources\arrow_down32x32_gray.png" />
     <None Include="Resources\arrow_right16x16_gray.png" />
     <None Include="Resources\arrow_right32x32_gray.png" />
+    <None Include="Resources\arrow_down16x16_darkgray.png" />
+    <None Include="Resources\arrow_right16x16_darkgray.png" />
+    <None Include="Resources\arrow_down16x16_white.png" />
+    <None Include="Resources\arrow_right16x16_white.png" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">

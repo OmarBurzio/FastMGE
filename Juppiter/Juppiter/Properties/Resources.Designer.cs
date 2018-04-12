@@ -113,9 +113,29 @@ namespace Juppiter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_down16x16_darkgray {
+            get {
+                object obj = ResourceManager.GetObject("arrow_down16x16_darkgray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_down16x16_gray {
             get {
                 object obj = ResourceManager.GetObject("arrow_down16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_down16x16_white {
+            get {
+                object obj = ResourceManager.GetObject("arrow_down16x16_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +183,29 @@ namespace Juppiter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_right16x16_darkgray {
+            get {
+                object obj = ResourceManager.GetObject("arrow_right16x16_darkgray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_right16x16_gray {
             get {
                 object obj = ResourceManager.GetObject("arrow_right16x16_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_right16x16_white {
+            get {
+                object obj = ResourceManager.GetObject("arrow_right16x16_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

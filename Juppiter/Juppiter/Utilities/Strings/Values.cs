@@ -13,6 +13,7 @@ namespace Juppiter.Utilities.Strings
         public static string Descrizione = "Descrizione";
         public static string Image = "Image";
         public static string Page = "Page";
+        public static string CssClass = "CssClass";
 
         public static FilterElement[] PopulateFilterElementsArray()
         {

@@ -39,9 +39,9 @@ namespace Juppiter.Analytics_Pages
         }
         protected void ImageButton_Show(object sender, ImageClickEventArgs e)
         {
-            if (((ImageButton)sender).ImageUrl.Contains("minus"))
+            if (((ImageButton)sender).ImageUrl.Contains("down"))
             {
-                ((ImageButton)sender).ImageUrl = "~/Immagini/plus.png";
+                ((ImageButton)sender).ImageUrl = "~/Resources/arrow_right16x16.png";
                 if (((ImageButton)sender).CommandArgument == Properties.Settings.Default.ContenutoImportazione)
                     ContentImportazioneDati.Visible = false;
                 else if (((ImageButton)sender).CommandArgument == Properties.Settings.Default.ContenutoImpostazioneFiltri)
@@ -51,7 +51,7 @@ namespace Juppiter.Analytics_Pages
             }
             else
             {
-                ((ImageButton)sender).ImageUrl = "~/Immagini/minus.png";
+                ((ImageButton)sender).ImageUrl = "~/Resources/arrow_down16x16.png";
                 if (((ImageButton)sender).CommandArgument == Properties.Settings.Default.ContenutoImportazione)
                     ContentImportazioneDati.Visible = true;
                 else if (((ImageButton)sender).CommandArgument == Properties.Settings.Default.ContenutoImpostazioneFiltri)
@@ -60,68 +60,91 @@ namespace Juppiter.Analytics_Pages
                     ContentEsecuzioneAnalisi.Visible = true;
             }
         }
+
+        private bool changeCssClass(int parentIndex)
+        {
+
+            DataRow row = Global.dataTableFilterElements.Select(Utilities.Strings.Values.CssClass + "='btnselected'").FirstOrDefault();
+            if(row != null)
+            {
+                row[Utilities.Strings.Values.CssClass] = "btn";
+            }
+            row = Global.dataTableFilterElements.Rows[parentIndex];
+            bool result = (row[Utilities.Strings.Values.CssClass].ToString() != "btnselected");
+            row[Utilities.Strings.Values.CssClass] = "btnselected";
+
+            LViewFilter.DataSource = Global.dataTableFilterElements;
+            LViewFilter.DataBind();
+
+            return result;
+        }
+
         protected void ButtonSelectFilter_Click(object sender, EventArgs e)
         {
-            DivButton.Visible = true;
-            if (((Button)sender).ToolTip.Contains("Causale"))
+            
+            if (changeCssClass(((ListViewDataItem)((Control)sender).Parent).DataItemIndex))
             {
-                //((Button)sender).Attributes.Remove("class");
-                //((Button)sender).Attributes["class"] = "btnSelected";
-                //string pippo = ((Button)sender).CssClass;
-                //((Button)sender).CssClass = "btnSelected";
-                //LViewFilter.DataBind();
-                ((Button)sender).BackColor = System.Drawing.Color.LightBlue;
-                DivSegno.Visible = false;
-                DivStato.Visible = false;
-                DivData.Visible = false;
-                ResponseDataTable responseDataTable = Global.serviceManager.CausaliManager.GetPrime20Causali().ToDataTable();
-                if (responseDataTable.result.Stato == DL.ItemEventoStato.OK)
+                DivButton.Visible = true;
+                if (((Button)sender).ToolTip.Contains("Causale"))
                 {
-                    DivFiltro.Visible = true;
-                    GridViewFilter.DataSource = responseDataTable.dataTable;
-                    GridViewFilter.DataBind();
+                    //((Button)sender).Attributes.Remove("class");
+                    //((Button)sender).Attributes["class"] = "btnSelected";
+                    //string pippo = ((Button)sender).CssClass;
+                    //((Button)sender).CssClass = "btnSelected";
+                    //LViewFilter.DataBind();
+                    ((Button)sender).BackColor = System.Drawing.Color.LightBlue;
+                    DivSegno.Visible = false;
+                    DivStato.Visible = false;
+                    DivData.Visible = false;
+                    ResponseDataTable responseDataTable = Global.serviceManager.CausaliManager.GetPrime20Causali().ToDataTable();
+                    if (responseDataTable.result.Stato == DL.ItemEventoStato.OK)
+                    {
+                        DivFiltro.Visible = true;
+                        GridViewFilter.DataSource = responseDataTable.dataTable;
+                        GridViewFilter.DataBind();
+                    }
+                    selectedFilterType = SelectedFilterDataTable_Types.Causale;
                 }
-                selectedFilterType = SelectedFilterDataTable_Types.Causale;
-            }
-            else if (((Button)sender).ToolTip.Contains("filiali"))
-            {
-                DivData.Visible = false;
-                DivSegno.Visible = false;
-                DivStato.Visible = false;
-                ResponseDataTable response = Global.serviceManager.FilialiManager.GetFiliali().ToDataTable();
-                if (response.result.Stato == DL.ItemEventoStato.OK)
+                else if (((Button)sender).ToolTip.Contains("filiali"))
                 {
-                    DivFiltro.Visible = true;
-                    GridViewFilter.DataSource = response.dataTable;
-                    GridViewFilter.DataBind();
+                    DivData.Visible = false;
+                    DivSegno.Visible = false;
+                    DivStato.Visible = false;
+                    ResponseDataTable response = Global.serviceManager.FilialiManager.GetFiliali().ToDataTable();
+                    if (response.result.Stato == DL.ItemEventoStato.OK)
+                    {
+                        DivFiltro.Visible = true;
+                        GridViewFilter.DataSource = response.dataTable;
+                        GridViewFilter.DataBind();
+                    }
+                    selectedFilterType = SelectedFilterDataTable_Types.Filiale;
                 }
-                selectedFilterType = SelectedFilterDataTable_Types.Filiale;
+                else if (((Button)sender).ToolTip.Contains("data"))
+                {
+                    DivData.Visible = true;
+                    DivFiltro.Visible = false;
+                    DivSegno.Visible = false;
+                    DivStato.Visible = false;
+                    selectedFilterType = SelectedFilterDataTable_Types.Data;
+                }
+                else if (((Button)sender).Text.Contains("Segno"))
+                {
+                    DivData.Visible = false;
+                    DivFiltro.Visible = false;
+                    DivSegno.Visible = true;
+                    DivStato.Visible = false;
+                    selectedFilterType = SelectedFilterDataTable_Types.Segno;
+                }
+                else if (((Button)sender).Text.Contains("Conto"))
+                {
+                    DivData.Visible = false;
+                    DivFiltro.Visible = false;
+                    DivSegno.Visible = false;
+                    DivStato.Visible = true;
+                    selectedFilterType = SelectedFilterDataTable_Types.StatoConto;
+                }
+                ButtonSelezione.Visible = true;
             }
-            else if (((Button)sender).ToolTip.Contains("data"))
-            {
-                DivData.Visible = true;
-                DivFiltro.Visible = false;
-                DivSegno.Visible = false;
-                DivStato.Visible = false;
-                selectedFilterType = SelectedFilterDataTable_Types.Data;
-            }
-            else if (((Button)sender).Text.Contains("Segno"))
-            {
-                DivData.Visible = false;
-                DivFiltro.Visible = false;
-                DivSegno.Visible = true;
-                DivStato.Visible = false;
-                selectedFilterType = SelectedFilterDataTable_Types.Segno;
-            }
-            else if (((Button)sender).Text.Contains("Conto"))
-            {
-                DivData.Visible = false;
-                DivFiltro.Visible = false;
-                DivSegno.Visible = false;
-                DivStato.Visible = true;
-                selectedFilterType = SelectedFilterDataTable_Types.StatoConto;
-            }
-            ButtonSelezione.Visible = true;
         }
 
         protected void ButtonSelezione_Click(object sender, EventArgs e)
@@ -408,6 +431,11 @@ namespace Juppiter.Analytics_Pages
             else
             {
             }
+        }
+
+        protected void LViewFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

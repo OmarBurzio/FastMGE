@@ -37,9 +37,16 @@
     <table class="main">
         <tr class="navbar">
             <td>
-                <asp:ImageButton runat="server" ImageAlign="Middle" ImageUrl="~/Immagini/minus.png" BorderStyle="None" CommandArgument="ContentImportazioneDati" OnClick="ImageButton_Show"></asp:ImageButton>
-                <label>IMPORTAZIONE DATI</label>
-
+                <table>
+                    <tr>
+                        <td class="tdCollapsableDiv tdImageCollapsableDiv">
+                            <asp:ImageButton runat="server" CssClass="tdCollapsableDiv" ImageUrl="~/Resources/arrow_down16x16.png" BorderStyle="None" CommandArgument="ContentImportazioneDati" OnClick="ImageButton_Show"></asp:ImageButton>
+                        </td>
+                        <td class="tdCollapsableDiv">
+                            <label>IMPORTAZIONE DATI</label>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr runat="server" id="ContentImportazioneDati" class="Content">
@@ -63,9 +70,16 @@
         </tr>
         <tr class="navbar">
             <td>
-                <br />
-                <asp:ImageButton runat="server" ImageAlign="Middle" ImageUrl="~/Immagini/minus.png" BorderStyle="None" CommandArgument="ContentImpostazioneFiltri" OnClick="ImageButton_Show"></asp:ImageButton>
-                <label>IMPOSTAZIONE FILTRI</label>                
+                <table>
+                    <tr>
+                        <td class="tdCollapsableDiv tdImageCollapsableDiv">
+                            <asp:ImageButton runat="server" CssClass="tdCollapsableDiv" ImageUrl="~/Resources/arrow_down16x16.png" BorderStyle="None" CommandArgument="ContentImpostazioneFiltri" OnClick="ImageButton_Show"></asp:ImageButton>
+                        </td>
+                        <td class="tdCollapsableDiv">
+                            <label>IMPOSTAZIONE FILTRI</label>  
+                        </td>
+                    </tr>
+                </table>  
             </td>
         </tr>        
         <tr class="Content" id="ContentImpostazioneFiltri" runat="server">
@@ -73,7 +87,7 @@
                 <div class="btn-group" role="group">
                     <asp:ListView ID="LViewFilter" runat="server">
                         <ItemTemplate>
-                            <asp:Button CssClass="btn" ID="ButtonSelectFilter" runat="server" Text='<%# Eval("Titolo") %>' ToolTip='<%# Eval("Descrizione") %>' OnClick="ButtonSelectFilter_Click" CommandArgument='<%# Eval("Page") %>' />
+                            <asp:Button CssClass='<%# Eval("CssClass") %>' ID='ButtonSelectFilter' runat="server" Text='<%# Eval("Titolo") %>' ToolTip='<%# Eval("Descrizione") %>' OnClick="ButtonSelectFilter_Click" CommandArgument='<%# Eval("Page") %>' />
                         </ItemTemplate>
                     </asp:ListView>
                 </div>
@@ -144,8 +158,16 @@
         </tr>
         <tr class="navbar">
             <td>
-                <asp:ImageButton runat="server" ImageAlign="Middle" ImageUrl="~/Immagini/minus.png" BorderStyle="None" CommandArgument="ContentEsecuzioneAnalisi" OnClick="ImageButton_Show"></asp:ImageButton>
-                <label>ESECUZIONE ANALISI</label>
+                <table>
+                    <tr>
+                        <td class="tdCollapsableDiv tdImageCollapsableDiv">
+                            <asp:ImageButton runat="server" CssClass="tdCollapsableDiv" ImageUrl="~/Resources/arrow_down16x16.png" BorderStyle="None" CommandArgument="ContentEsecuzioneAnalisi" OnClick="ImageButton_Show"></asp:ImageButton>
+                        </td>
+                        <td class="tdCollapsableDiv">
+                            <label>ESECUZIONE ANALISI</label>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr class="Content" id="ContentEsecuzioneAnalisi" runat="server">

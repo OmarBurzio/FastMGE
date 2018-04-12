@@ -30,6 +30,7 @@ namespace Juppiter
             dataTableFilterElements.Columns.Add(Utilities.Strings.Values.Descrizione, typeof(string));
             dataTableFilterElements.Columns.Add(Utilities.Strings.Values.Image, typeof(string));
             dataTableFilterElements.Columns.Add(Utilities.Strings.Values.Page, typeof(string));
+            dataTableFilterElements.Columns.Add(Utilities.Strings.Values.CssClass, typeof(string));
 
             foreach (FilterElement currentFilter in Utilities.Strings.Values.PopulateFilterElementsArray())
             {
@@ -39,6 +40,7 @@ namespace Juppiter
                 currentRow[Utilities.Strings.Values.Descrizione] = currentFilter.Descrizione;
                 currentRow[Utilities.Strings.Values.Image] = currentFilter.Image;
                 currentRow[Utilities.Strings.Values.Page] = currentFilter.Page;
+                currentRow[Utilities.Strings.Values.CssClass] = "btn";
                 dataTableFilterElements.Rows.Add(currentRow);
             }
 

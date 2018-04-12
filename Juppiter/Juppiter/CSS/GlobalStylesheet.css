@@ -19,11 +19,13 @@
 .main{    
     width:79vw;
     background-color:white;
+    margin-top:2.3em;
 }
 
 .main_menu{
     width:79vw;
-    background-color:white;
+    background-color:transparent;
+    position:absolute;
 }
 
 .divPoweredBy{
@@ -68,7 +70,7 @@
 
 .tableSiteMaster
 {
-    width:99vw;
+    width:98vw;
     background-color:white;
     border-spacing: 0px;
     border-collapse: collapse;
@@ -87,15 +89,20 @@
     background-color:white;
     color:black;
     padding:5px;
+    border-radius:4px;
+    margin:.15em;
 }
-.btn:active,
-.btn.active,
-.btn:target{
-     background-color:lightblue !important;
+.btn:hover{
+     background-color:#35baf6 !important;
 }
 
-.btnSelected{
-    background-color:lightblue !important;
+.btnselected{
+    border:2px solid #35baf6;
+    background-color:#35baf6;
+    color:black;
+    padding:5px;
+    border-radius:4px;
+    margin:.15em;
 }
 
 #TreeViewNavigationBar a{
@@ -209,4 +216,15 @@
 .cssCalendar>tbody>tr:last-child>td:last-child
 {
     border-bottom-right-radius:5px;
+}
+
+.tdCollapsableDiv{
+    vertical-align:middle;
+    color:black;
+    font-size:1em;
+}
+
+.tdImageCollapsableDiv{
+    padding-left:.5em;
+    padding-right:.4em;
 }
