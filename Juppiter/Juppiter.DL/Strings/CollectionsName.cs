@@ -15,6 +15,7 @@ namespace Juppiter.DL.Strings
         public static string Segno_Movimenti = "_Elab_Movimenti_Segno";
         public static string Stato_Movimenti = "_Elab_Movimenti_ContoCorrente";
         public static string _Movimenti_Causali_OrderedCount = "_Movimenti_Causali_OrderedCount";
-        public static string _Movimenti_Filiali_OrderedCount = "_Movimenti_Filiali_OrderedCount";       
+        public static string _Movimenti_Filiali_OrderedCount = "_Movimenti_Filiali_OrderedCount";
+        public static string Elab_Movimenti = "_Elab_Movimenti_";
     }
 }

@@ -9,6 +9,7 @@ namespace Juppiter.DL.Strings
     public static class DatabaseColumnsName
     {
         public static string _id = "_id";
+        public static string _idMovimento = "id_Movimento";
         public static string SCAUSALE = "SCAUSALE";
         public static string SDESCRIZIONECAUSALE = "SDESCRIZIONECAUSALE";
         public static string Causale = "Causale";
