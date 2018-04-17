@@ -49,7 +49,8 @@ namespace Juppiter.DL
                 {
                     IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
                     IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Elab_Movimenti + dataDa.Year.ToString());
-                    response.collection = collection.Aggregate().Match(builder.And(listFilter.ToArray())).ToList();
+                    response.collection = collection.Aggregate().Match(builder.Or(listFilter.ToArray())).
+                             Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, { DatabaseColumnsName._idMovimento, 1 } }).ToList();
                 }
             }
             catch(Exception ex)
@@ -75,11 +76,10 @@ namespace Juppiter.DL
                     }
                     if (listFilter.Count > 0)
                     {
-
                         IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
                         IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Causali_Movimenti);
-
-                        response.collection = collection.Aggregate().Match(builder.And(listFilter.ToArray())).ToList();                      
+                        response.collection = collection.Aggregate().Match(builder.Or(listFilter.ToArray())).
+                            Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, { DatabaseColumnsName._idMovimento, 1 } }).ToList();
                     }
                 }
                 else if (key == SelectedFilterDataTable_Types.Filiale)
@@ -100,16 +100,16 @@ namespace Juppiter.DL
                 }
                 else if (key == SelectedFilterDataTable_Types.Segno)
                 {
-                    FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Empty;
+                    List<FilterDefinition<BsonDocument>> listFilter = new List<FilterDefinition<BsonDocument>>();
                     foreach (string g in dictionary.Values)
                     {
                         switch (g)
                         {
                             case "Entrata":
-                                filter = builder.Eq(DatabaseColumnsName.SSEGNO, DatabaseColumnsName.segno.Entrata);
+                                listFilter.Add(builder.Eq(DatabaseColumnsName.SSEGNO, DatabaseColumnsName.segno.Entrata));
                                 break;
                             case "Uscita":
-                                filter = builder.Eq(DatabaseColumnsName.SSEGNO, DatabaseColumnsName.segno.Uscita);
+                                listFilter.Add(builder.Eq(DatabaseColumnsName.SSEGNO, DatabaseColumnsName.segno.Uscita));
                                 break;
                         }                        
                     }
@@ -117,7 +117,8 @@ namespace Juppiter.DL
                     IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
                     IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Segno_Movimenti);
 
-                    response.collection = collection.Aggregate().Match(filter).ToList();
+                    response.collection = collection.Aggregate().Match(builder.Or(listFilter)).
+                            Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, { DatabaseColumnsName._idMovimento, 1 } }).ToList();
                 }
                 else if (key == SelectedFilterDataTable_Types.StatoConto)
                 {
@@ -138,8 +139,9 @@ namespace Juppiter.DL
 
                     IMongoDatabase myDB = mongoClient.GetDatabase(DatabaseName.BAM);
                     IMongoCollection<BsonDocument> collection = myDB.GetCollection<BsonDocument>(CollectionsName.Stato_Movimenti);
-                    
-                    response.collection = collection.Aggregate().Match(filter).ToList();
+
+                    response.collection = collection.Aggregate().Match(builder.Or(filter)).
+                            Project(new BsonDocument { { DatabaseColumnsName._id, 0 }, { DatabaseColumnsName._idMovimento, 1 } }).ToList();
                 }
                 else if (key == SelectedFilterDataTable_Types.Data)
                 {
@@ -220,10 +222,17 @@ namespace Juppiter.DL
                     dictionaryList.TryGetValue(currentKey, out currentResponse);
 
                     OutFunc(currentKey, currentDictionary, out currentResponse);
-                    ResponseQuerys.collection = currentResponse.collection;
+                    if (ResponseQuerys.collection.Count == 0)
+                    {
+                        ResponseQuerys.collection = currentResponse.collection;
+                    }
+                    else
+                    {
+                        ResponseQuerys.collection = ResponseQuerys.collection.Intersect(currentResponse.collection).ToList();
+                    }
                     // listAction.Add(new Action(() => { OutFunc(currentKey, currentDictionary, out currentResponse); }));                    
                 }
-                response.entity = new BsonDocument("Numero Movimenti con i filtri selezionati",currentResponse.collection.Count());
+                response.entity = new BsonDocument("Numero Movimenti con i filtri selezionati",currentResponse.collection.Count());                
               //  Parallel.Invoke(listAction.ToArray());              
             }
             catch(Exception ex)
