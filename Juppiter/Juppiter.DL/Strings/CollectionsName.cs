@@ -16,6 +16,6 @@ namespace Juppiter.DL.Strings
         public static string Stato_Movimenti = "_Elab_Movimenti_ContoCorrente";
         public static string _Movimenti_Causali_OrderedCount = "_Movimenti_Causali_OrderedCount";
         public static string _Movimenti_Filiali_OrderedCount = "_Movimenti_Filiali_OrderedCount";
-        public static string Elab_Movimenti = "_Elab_Movimenti_";
+        public static string[] Elab_Movimenti =  { "_Elab_Movimenti_2016" , "_Elab_Movimenti_2017", "_Elab_Movimenti_2018" };
     }
 }
