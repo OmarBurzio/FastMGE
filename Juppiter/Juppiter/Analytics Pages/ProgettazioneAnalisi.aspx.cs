@@ -427,10 +427,9 @@ namespace Juppiter.Analytics_Pages
             if(dataTableSelectedItems != null)
             {
                 ResponseEntity<BsonDocument> response = Global.serviceManager.MovimentiManager.GetNumeroMovimentiFiltrati(dictionarySelectedRows);
+                
             }
-            else
-            {
-            }
+            
         }
 
         protected void LViewFilter_SelectedIndexChanged(object sender, EventArgs e)
