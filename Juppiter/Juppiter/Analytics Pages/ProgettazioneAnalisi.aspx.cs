@@ -427,14 +427,16 @@ namespace Juppiter.Analytics_Pages
             if(dataTableSelectedItems != null)
             {
                 ResponseEntity<BsonDocument> response = Global.serviceManager.MovimentiManager.GetNumeroMovimentiFiltrati(dictionarySelectedRows);
-                
+                lblResult.Visible = true;
+                lblResult.ForeColor = System.Drawing.Color.Green;
+                lblResult.Text = "Numero Movimenti con i filtri impostati: "+response.entity["NMovimenti"].ToString();
             }
-            
-        }
-
-        protected void LViewFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            else
+            {
+                lblResult.Visible = true;
+                lblResult.ForeColor = System.Drawing.Color.Red;
+                lblResult.Text = "Selezionare dei Filtri!";
+            }            
         }
     }
 }

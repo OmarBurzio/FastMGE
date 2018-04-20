@@ -233,6 +233,36 @@ namespace Juppiter.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Benefits16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Benefits16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cc_chiusi16x16 {
+            get {
+                object obj = ResourceManager.GetObject("cc_chiusi16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cc16x16 {
+            get {
+                object obj = ResourceManager.GetObject("cc16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dashboard16x16 {
             get {
                 object obj = ResourceManager.GetObject("dashboard16x16", resourceCulture);
@@ -396,6 +426,16 @@ namespace Juppiter.Properties {
         internal static System.Drawing.Bitmap minus {
             get {
                 object obj = ResourceManager.GetObject("minus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Movimenti16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Movimenti16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

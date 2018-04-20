@@ -119,6 +119,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Analytics Pages\Beneficiari.aspx" />
+    <Content Include="Analytics Pages\CCChiusi.aspx" />
     <Content Include="Analytics Pages\ProgettazioneAnalisi.aspx" />
     <Content Include="Analytics Pages\Settings.aspx" />
     <Content Include="Analytics.aspx" />
@@ -180,6 +182,10 @@
     <None Include="Resources\arrow_right16x16_darkgray.png" />
     <None Include="Resources\arrow_down16x16_white.png" />
     <None Include="Resources\arrow_right16x16_white.png" />
+    <None Include="Resources\cc16x16.png" />
+    <None Include="Resources\cc_chiusi16x16.png" />
+    <None Include="Resources\Benefits16x16.png" />
+    <None Include="Resources\Movimenti16x16.png" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
@@ -195,6 +201,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analytics Pages\Beneficiari.aspx.cs">
+      <DependentUpon>Beneficiari.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analytics Pages\Beneficiari.aspx.designer.cs">
+      <DependentUpon>Beneficiari.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Analytics Pages\CCChiusi.aspx.cs">
+      <DependentUpon>CCChiusi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Analytics Pages\CCChiusi.aspx.designer.cs">
+      <DependentUpon>CCChiusi.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Analytics Pages\ProgettazioneAnalisi.aspx.cs">
       <DependentUpon>ProgettazioneAnalisi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

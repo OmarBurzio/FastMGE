@@ -239,7 +239,7 @@ namespace Juppiter.DL
                 //    // listAction.Add(new Action(() => { OutFunc(currentKey, currentDictionary, out currentResponse); }));                    
                 //}
                 OutFunc(filterDictionary, out count);
-                response.entity = new BsonDocument("Numero Movimenti con i filtri selezionati", count);                
+                response.entity = new BsonDocument("NMovimenti", count);                
               //  Parallel.Invoke(listAction.ToArray());              
             }
             catch(Exception ex)

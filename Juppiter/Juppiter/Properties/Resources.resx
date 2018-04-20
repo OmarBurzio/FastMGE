@@ -262,4 +262,16 @@
   <data name="arrow_right16x16_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_right16x16_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cc16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cc16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Benefits16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Benefits16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cc_chiusi16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cc_chiusi16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Movimenti16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Movimenti16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

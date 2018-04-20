@@ -21,7 +21,16 @@
                     </ul>
                 </li>
                 <li><a href="/Analytics Pages/ProgettazioneAnalisi.aspx">
-                    <img src="/Resources/progettazione16x16_gray.png" /><span>Progettazione Analisi</span></a></li>
+                    <img src="/Resources/progettazione16x16_gray.png" /><span>Progettazione Analisi</span></a>
+                     <ul>
+                        <li><a href="#">
+                            <img src="../Resources/Movimenti16x16.png" /><span>N° Movimenti</span></a></li>
+                        <li><a href="CCChiusi.aspx ">
+                            <img src="../Resources/cc_chiusi16x16.png" /><span>CC Chiusi</span></a></li>
+                        <li><a href="Beneficiari.aspx">
+                            <img src="../Resources/Benefits16x16.png" /><span>Beneficiari</span></a></li>                       
+                    </ul>
+                </li>
                 <li><a href="/Analytics Pages/Settings.aspx">
                     <img src="/Resources/settings_16x16_gray.png" /><span>Settings</span></a></li>
                 <li><a href="#">
@@ -197,6 +206,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+                  <asp:Label runat="server" id="lblResult" Visible="false"></asp:Label>
             </td>
         </tr>
     </table>   
